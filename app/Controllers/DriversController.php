@@ -64,6 +64,7 @@ class DriversController extends BaseController
             'name' => $this->request->getPost('name'),
             'phone' => $this->request->getPost('phone'),
             'vehicle_plate' => $this->request->getPost('vehicle_plate'),
+            'status' => $this->request->getPost('status'),
         ]);
         return redirect()->to('/drivers')->with('success', 'Data Drivers Berhasil Diubah');
     }
