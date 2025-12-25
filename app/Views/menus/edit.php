@@ -33,9 +33,9 @@
             <!-- Gambar Menu Makanan -->
             <div class="mb-3">
                 <label class="from-label">Gambar Menu</label>
-                <?php if(!empty($menus['cover'])) : ?>
+                <?php if(!empty($menu['cover'])) : ?>
                     <div class="mb-2">
-                        <img src="<?= base_url('image/cover/' . $menus['cover']) ?>" alt="" style="max-height: 100px;" class="img-thumbnail">
+                        <img src="<?= base_url('image/cover/' . $menu['cover']) ?>" alt="" style="max-height: 100px;" class="img-thumbnail">
                     </div>
                 <?php endif ?>    
                 <input type="file" name="cover" class="form-control">
