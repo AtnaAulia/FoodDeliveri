@@ -41,29 +41,43 @@ class MenusController extends BaseController
         return redirect()->to('/menus')->with('success', 'Data Buku Berhasil Disimpan');
     }
 
-    public function edit($id)
-    {
-        $menusModel = new \App\Models\MenusModel();
+   public function edit($id){
+    $menusModel = new \App\Models\MenusModel();
+    $restaurantsModel = new \App\Models\RestaurantsModel();
+    $data = [
+        'title' => 'Update Menus',
+        'subtitle' => 'Edit Data Menus',
+        'menu' => $menusModel->find($id),
+        'restaurants' => $restaurantsModel->findAll()
+    ];
 
-        $data = [
-            'title' => 'menus',
-            'subtitle' => 'Ubah Data Menus',
-            'menus' => $menusModel->find($id)
-        ];
-        return view('menus/edit', $data); //Mengirimkan data ke folder buku/edit.php
+    return view('menus/edit', $data);
     }
 
-    public function update($id) {
-        $bukuModel = new \App\Models\BukuModel();
+   public function update($id){
+        $menusModel = new \App\Models\MenusModel();
+        $coverLama = $this->request->getPost('cover_lama');
+        $coverFile = $this->request->getFile('cover');
+        $coverName = $coverLama;
+        if($coverFile && $coverFile->isValid() && !$coverFile->hasMoved()) {
+            $newName = $coverFile->getRandomName();
+            $coverFile->move('image/cover', $newName);
+                if(!empty($coverLama) && file_exists(FCPATH.'image/cover/'.$coverLama)) {
+                    unlink(FCPATH.'image/cover/'.$coverLama);
+                }
+            $coverName = $newName;
+        }
 
-        $bukuModel->update($id, [
-            'judul' => $this->request->getPost('judul'),
-            'id_kategori' => $this->request->getPost('id_kategori'),
-            'pengarang' => $this->request->getPost('pengarang'),
-            'tahun_terbit' => $this->request->getPost('tahun_terbit')
+        $menusModel->update($id, [
+            'restaurants_id' => $this->request->getPost('restaurants_id'),
+            'name' => $this->request->getPost('name'),
+            'cover' => $coverName,
+            'description' => $this->request->getPost('description'),
+            'price' => $this->request->getPost('price'),
+            'is_available' => $this->request->getPost('is_available')
         ]);
 
-        return redirect()->to('/buku')->with('success', 'Data Buku Berhasil Update');
+        return redirect()->to('menus')->with('success', 'Data Menus Berhasil Diubah');
     } //Fungsi Update Data Buku Berdasarkan ID Dengan Menggunakan Function
 
     public function delete($id)
