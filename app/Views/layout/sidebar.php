@@ -14,7 +14,7 @@
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
-            <h5 class="mb-0 font-weight-normal">Kayla Haya</h5>
+            <h5 class="mb-0 font-weight-normal">Kayla Hayya</h5>
             <span>Admin</span>
           </div>
         </div>
