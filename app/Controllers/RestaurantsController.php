@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
+
+class RestaurantsController extends BaseController
+{
+    public function index()
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel();
+        $data['restaurants'] = $restaurantsModel->findAll();
+        return view('restaurants/index', $data);
+    }
+
+    public function create()
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel(); //menghubungkan file model ke controller
+        $data = [
+            'title' => 'restaurants',
+            'subtitle' => 'Tambah Data Restaurants'
+        ];
+
+        return view('restaurants/create', $data);
+    }
+
+    public function insert()
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel();
+        // di bawah ini adalah query INSERT INTO versi codeigniter
+        $restaurantsModel->insert([
+            'name' => $this->request->getPost('name'),
+            'phone' => $this->request->getPost('phone'),
+            'address' => $this->request->getPost('address'),
+            'opening_hours' => $this->request->getPost('opening_hours'),
+            
+        ]);
+        //Mengembalikan ke index buku dengan flash massage "success" pada main.php
+        return redirect()->to('/restaurants')->with('success', 'Data Kategori Berhasil Disimpan');
+    }
+
+    public function edit($id)
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel();
+
+        $restaurants = $restaurantsModel->find($id);
+
+        if (!$restaurants) {
+            return redirect()->to('/restaurants');
+        }
+
+        return view('restaurants/edit', [
+            'restaurants' => $restaurants,
+            'title' => 'restaurants',
+            'subtitle' => 'Edit Data Restaurants'
+        ]);
+    }
+
+    public function update($id)
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel();
+        $restaurantsModel->update($id, [
+            'name' => $this->request->getPost('name'),
+            'phone' => $this->request->getPost('phone'),
+            'address' => $this->request->getPost('address'),
+            'opening_hours' => $this->request->getPost('opening_hours'),
+            'status' => $this->request->getPost('status'),
+        ]);
+        return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Diubah');
+    }
+
+    public function delete($id)
+    {
+        $restaurantsModel = new \App\Models\RestaurantsModel();
+        $restaurantsModel->delete($id);
+        return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Dihapus');
+    }
+}
