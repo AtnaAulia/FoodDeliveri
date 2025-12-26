@@ -1,4 +1,4 @@
-<?php $uri = service('uri'); ?>
+<?php $segment =(string) service('uri')->getSegment(1); ?>
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -58,36 +58,36 @@
     <li class="nav-item nav-category">
       <span class="nav-link">Navigation</span>
     </li>
-    <li class="nav-item menu-items <?= ($uri->getSegment(1) == '' ? 'active' : '') ?>">
-  <a class="nav-link" href="<?= base_url('/') ?>">
+    <li class="nav-item menu-items <?= ($segment === '') ? 'active' : ''?>">
+  <a class="nav-link " href="<?= base_url('/') ?>">
     <span class="menu-icon"><i class="mdi mdi-speedometer"></i></span>
     <span class="menu-title">Dashboard</span>
   </a>
 </li>
 
-<li class="nav-item menu-items <?= ($uri->getSegment(1) == 'customers' ? 'active' : '') ?>">
-  <a class="nav-link" href="<?= base_url('customers') ?>">
+<li class="nav-item menu-items <?= ($segment === 'customers') ? 'active' : '' ?>">
+  <a class="nav-link " href="<?= base_url('customers') ?>">
     <span class="menu-icon"><i class="mdi mdi-playlist-play"></i></span>
     <span class="menu-title">Customer</span>
   </a>
 </li>
 
-<li class="nav-item menu-items <?= ($uri->getSegment(1) == 'menus' ? 'active' : '') ?>">
-  <a class="nav-link" href="<?= base_url('menus') ?>">
+<li class="nav-item menu-items <?= ($segment === 'menus') ? 'active' : '' ?>">
+  <a class="nav-link " href="<?= base_url('menus') ?>">
     <span class="menu-icon"><i class="mdi mdi-table-large"></i></span>
     <span class="menu-title">Menus</span>
   </a>
 </li>
 
-<li class="nav-item menu-items <?= ($uri->getSegment(1) == 'drivers' ? 'active' : '') ?>">
-  <a class="nav-link" href="<?= base_url('drivers') ?>">
+<li class="nav-item menu-items <?= ($segment === 'drivers') ? 'active' : '' ?>">
+  <a class="nav-link " href="<?= base_url('drivers') ?>">
     <span class="menu-icon"><i class="mdi mdi-chart-bar"></i></span>
     <span class="menu-title">Drivers</span>
   </a>
 </li>
 
-<li class="nav-item menu-items <?= ($uri->getSegment(1) == 'restaurants' ? 'active' : '') ?>">
-  <a class="nav-link" href="<?= base_url('restaurants') ?>">
+<li class="nav-item menu-items <?= ($segment === 'restaurants') ? 'active' : '' ?>">
+  <a class="nav-link " href="<?= base_url('restaurants') ?>">
     <span class="menu-icon"><i class="mdi mdi-contacts"></i></span>
     <span class="menu-title">Restaurants</span>
   </a>
