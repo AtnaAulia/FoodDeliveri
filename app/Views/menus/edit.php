@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Nama Restaurant</label>
-                <select name="restaurants_id" class="form-select" required>
+                <select name="restaurants_id" class="form-control" required>
                     <option value=""> - Pilih Nama Restaurant - </option>
                     <?php foreach ($restaurants as $data) : ?>
                     <option value="<?=  $data['restaurants_id'] ?>" <?= $menu['restaurants_id'] == $data['restaurants_id'] ? 'selected' : '' ?>>
@@ -54,7 +54,7 @@
 
         <div class="mb-3">
             <label class="form-label">Status</label>
-                <select name="is_available" class="form-select">
+                <select name="is_available" class="form-control">
                 <option value="Available"
             <?= $menu['is_available'] == 'Available' ? 'selected' : '' ?>>
             Available

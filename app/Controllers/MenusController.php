@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class MenusController extends BaseController
@@ -79,17 +80,16 @@ class MenusController extends BaseController
 
         return redirect()->to('menus')->with('success', 'Data Menus Berhasil Diubah');
     } //Fungsi Update Data Buku Berdasarkan ID Dengan Menggunakan Function
-
+    
+//perbaikan delete
     public function delete($id)
     {
-        $bukuModel = new \App\Models\BukuModel();
-
-        $buku = $bukuModel->find($id);
-        if (!$buku) {
-            throw PageNotFoundException::forPageNotFound('Data Buku Tidak Ditemukan');
+        $menusModels = new \App\Models\MenusModel();
+        $menu = $menusModels->find($id);
+        if(!$menu){
+            throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
         }
-
-        $bukuModel->delete($id);
-        return redirect()->to('/buku')->with('success', 'Data Buku Berhasil Dihapus');
+        $menusModels->delete($id);
+        return redirect()->to('/menus')->with('success','Data Menu sudah dihapus');
     }
 }

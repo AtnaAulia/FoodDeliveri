@@ -16,11 +16,13 @@ class Restaurants extends Migration
             ],
             'name' => [
                 'type' => 'VARCHAR',
-                'constraint' => 150
+                'constraint' => 150,
+                'null' => true
             ],
             'phone' => [
                 'type' => 'VARCHAR',
-                'constraint' => 150
+                'constraint' => 150,
+                'null' => true
             ],
             'address' => [
                 'type' => 'TEXT',
