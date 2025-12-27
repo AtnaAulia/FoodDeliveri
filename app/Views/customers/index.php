@@ -21,22 +21,21 @@
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body p-3">
-        <div class="row align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="col">
             <h4 class="card-title mb-0">Data Customer's</h4>
           </div>
-
           <div class="col-auto">
-            <form class="input-group btn-md m-3" action="<?= base_url('customers'); ?>" method="get">
+            <form class="input-group btn-md m-8" action="<?= base_url('customers'); ?>" method="get">
                 <div class="input-group-prepend">
                     <div class="input-group-text mdi mdi-magnify"></div>
                 </div>
                    <input type="text" name="keyword" class="form-control" value="<?= $keyword ?? '' ?>">
             </form>
           </div>
-                <a href="<?= base_url('customers/create'); ?>" class="btn btn-primary  m-3">
-                  <i class="mdi mdi-plus-circle "></i> Tambah Customer
-                </a>
+          <a href="<?= base_url('customers/create'); ?>" class="btn btn-primary m-1">
+            <i><i class="mdi mdi-plus-circle"></i></i>Tambah Customer
+          </a>
         </div>
 
         <div class="table-responsive">

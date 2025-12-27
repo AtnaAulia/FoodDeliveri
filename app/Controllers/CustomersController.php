@@ -46,8 +46,10 @@ class CustomersController extends BaseController
         //Mengembalikan ke index buku dengan flash massage "success" pada main.php
         return redirect()->to('/customers')->with('toast', [
             'type' => 'success',
-            'message' => 'Data Customers Berhasil Diubah'
+            'title' => 'Berhasil',
+            'message' => 'Data customer berhasil ditambahkan'
         ]);
+
     }
     
 
@@ -80,9 +82,10 @@ class CustomersController extends BaseController
 
     return redirect()->to('/customers')->with('toast', [
     'type' => 'success',
-    'title' => 'berhasil',
-    'message' => 'Data Customers Berhasil Diubah'
+    'title' => 'Berhasil',
+    'message' => 'Data customer berhasil diperbarui'
     ]);
+
     }
 //perbaikan delete
     public function delete($id) {
@@ -92,6 +95,11 @@ class CustomersController extends BaseController
             throw PageNotFoundException::forPageNotFound("Data Tidak ditemukan");
         }
         $customersModel->delete($id);
-        return redirect()->to('/customers')->with('success','Data Customer berhasil dihapus');
+        return redirect()->to('/customers')->with('toast', [
+            'type' => 'error',
+            'title' => 'Dihapus',
+            'message' => 'Data customer berhasil dihapus'
+        ]);
+
     }
 }

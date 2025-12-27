@@ -8,10 +8,17 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class RestaurantsController extends BaseController
 {
-    public function index()
-    {
+    public function index(){
         $restaurantsModel = new \App\Models\RestaurantsModel();
-        $data['restaurants'] = $restaurantsModel->findAll();
+        $keyword = $this->request->getGet('keyword');
+        $data = [
+            'title' => 'Restaurants',
+            'subtitle' => 'Data Restaurants',
+            'restaurants' => $restaurantsModel->getRestaurants(5, 'restaurants', $keyword),
+            'pager' => $restaurantsModel->pager,
+            'perPage' => 5,
+            'keyword' => $keyword
+        ];
         return view('restaurants/index', $data);
     }
 

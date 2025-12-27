@@ -21,5 +21,19 @@ class RestaurantsModel extends Model
 
     // Dates
     protected $useTimestamps = true;
+    public function getRestaurants($perPage, $group, $keyword = null){
+        $builder = $this->select('restaurants.*');
+
+        if(!empty($keyword)) {
+            $builder = $builder->groupStart()
+            ->like('name', $keyword)
+            ->orLike('phone', $keyword)
+            ->orLike('address', $keyword)
+            ->orLike('opening_hours', $keyword)
+            ->orLike('status', $keyword)
+            ->groupEnd();
+        }
+        return $builder->paginate($perPage, $group);
+    }
     
 }

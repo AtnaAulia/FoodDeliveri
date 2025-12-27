@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h4 class="mb-0">Tambah Menus</h4>
     <a href="<?= base_url('menus')?>" class="btn btn-secondary btn-sm">
-         <i class="bi bi-arrow-left me-1"></i> Kembali
+         <i class="mdi mdi-arrow-left me-1"></i> Back
     </a>
 </div>
 
@@ -31,46 +31,52 @@
             </div>
 
             <!-- Gambar Menu Makanan -->
-            <div class="mb-3">
-                <label class="from-label">Gambar Menu</label>
-                <?php if(!empty($menu['cover'])) : ?>
-                    <div class="mb-2">
-                        <img src="<?= base_url('image/cover/' . $menu['cover']) ?>" alt="" style="max-height: 100px;" class="img-thumbnail">
-                    </div>
-                <?php endif ?>    
-                <input type="file" name="cover" class="form-control">
-                <small class="text-muted">Boleh dikosongkan jika tidak ada gambar menu.</small>
-            </div>
-
+            
             <div class="mb-3">
                 <label class="from-label">Deskripsi</label>
                 <input type="text" name="description" class="form-control" value="<?= $menu['description'] ?>" required>
             </div>
-
+            
             <div class="mb-3">
                 <label class="from-label">Harga</label>
                 <input type="number" name="price" class="form-control" value="<?= $menu['price'] ?>" required>
             </div>
-
-        <div class="mb-3">
-            <label class="form-label">Status</label>
+            
+            <div class="mb-3">
+                <label class="form-label">Status</label>
                 <select name="is_available" class="form-control">
-                <option value="Available"
-            <?= $menu['is_available'] == 'Available' ? 'selected' : '' ?>>
-            Available
+                    <option value="Available"
+                    <?= $menu['is_available'] == 'Available' ? 'selected' : '' ?>>
+                    Available
                 </option>
-
+                
                 <option value="Not Available"
-            <?= $menu['is_available'] == 'Not Available' ? 'selected' : '' ?>>
-            Not Available
-                </option>
-                </select>
-        </div>
-
-
-            <button type="submit" class="btn btn-primary">Simpan</button>
-        </form>    
+                <?= $menu['is_available'] == 'Not Available' ? 'selected' : '' ?>>
+                Not Available
+            </option>
+        </select>
     </div>
+    <div class="form-group">
+      <label>Image Menu</label>
+      <?php if(!empty($menu['cover'])) : ?>
+            <div class="mb-2">
+                <img src="<?= base_url('image/cover/' . $menu['cover']) ?>" alt="" style="max-height: 100px;" class="img-thumbnail">
+            </div>
+        <?php endif ?>
+      <input type="file" name="cover" class="file-upload-default">
+      <div class="input-group col-xs-12">
+        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+        <span class="input-group-append">
+          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+        </span>
+      </div>
+      <small class="text-muted">Boleh dikosongkan jika tidak ada gambar menu.</small>
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Simpan</button>
+</form>    
+</div>
 </div>
 
 <?= $this->endSection(); ?>

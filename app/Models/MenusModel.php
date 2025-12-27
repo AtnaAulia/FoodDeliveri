@@ -16,17 +16,26 @@ class MenusModel extends Model
         'name',
         'description',
         'price',
-        'is_available'
+        'is_available',
+        'cover'
     ];
 
     // Dates
     protected $useTimestamps = true;
 
-    public function getMenus()
-    {
-        return $this->select('menus.*, restaurants.name as restaurants_name')
-        ->join('restaurants', 'restaurants.restaurants_id = menus.restaurants_id')
-        ->findAll();
+    public function getMenus($perPage, $group, $keyword = null){ 
+        $builder = $this->select('menus.*, restaurants.name as restaurants_name')
+        ->join('restaurants', 'restaurants.restaurants_id = menus.restaurants_id');
+
+        if(!empty($keyword)) {
+           $builder = $builder->groupStart()
+           ->like('restaurants.name', $keyword)
+           ->orLike('menus.name', $keyword)
+           ->orLike('menus.description', $keyword)
+           ->orLike('menus.price', $keyword)
+           ->groupEnd();
+        }   
+        return $builder->paginate($perPage, $group);
     }
     
 }
