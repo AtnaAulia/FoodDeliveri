@@ -32,16 +32,6 @@
                 <label class="form-label">Opening Hours</label>
                 <input type="text" name="opening_hours" class="form-control" required>
              </div>
-            <!-- Status -->
-             <div class="mb-3">
-                <label class="form-label">Status</label>
-                <select class="form-control" name="status" class="form-select" required>
-                    <option value="">- Pilih Status -</option>
-                    <option value="beroperasi">Beroperasi</option>
-                    <option value="tutup">Tutup</option>
-                    <option value="istirahat">Istirahat</option>
-                </select>
-             </div>
 
             <!-- Tombol simpan dan reset -->
             <button type="submit" class="btn btn-primary">Simpan Data</button>

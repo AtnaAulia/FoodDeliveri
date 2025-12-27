@@ -27,9 +27,6 @@
                 <label class="form-label"> Vehicle Plate Divers</label>
                 <input type="text" name="vehicle_plate" class="form-control" required>
              </div>
-            <!-- Alamat -->
-             
-
             <!-- Tombol simpan dan reset -->
             <button type="submit" class="btn btn-primary">Simpan Data</button>
             <button type="reset" class="btn btn-outline-secondary">Reset</button>

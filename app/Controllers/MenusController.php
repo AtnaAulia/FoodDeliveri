@@ -60,7 +60,11 @@ class MenusController extends BaseController
             'cover' => $coverName
         ]);
         //Mengembalikan ke index buku dengan flash massage "success" pada main.php
-        return redirect()->to('/menus')->with('success', 'Data Buku Berhasil Disimpan');
+       return redirect()->to('/menus')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data customer berhasil ditambahkan'
+        ]);
     }
 
    public function edit($id){
@@ -99,7 +103,11 @@ class MenusController extends BaseController
             'is_available' => $this->request->getPost('is_available')
         ]);
 
-        return redirect()->to('menus')->with('success', 'Data Menus Berhasil Diubah');
+        return redirect()->to('/menus')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data customer berhasil diperbarui'
+        ]);
     } //Fungsi Update Data Buku Berdasarkan ID Dengan Menggunakan Function
     
 //perbaikan delete
@@ -111,6 +119,10 @@ class MenusController extends BaseController
             throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
         }
         $menusModels->delete($id);
-        return redirect()->to('/menus')->with('success','Data Menu sudah dihapus');
+        return redirect()->to('/menus')->with('toast', [
+            'type' => 'delete',
+            'title' => 'Dihapus',
+            'message' => 'Data customer berhasil dihapus'
+        ]);
     }
 }
