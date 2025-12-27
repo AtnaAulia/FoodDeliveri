@@ -1,6 +1,12 @@
 <?= $this->extend('layout/main'); ?>
 <?= $this->section('content'); ?>
 
+<?php 
+  $currentPage = $pager->getCurrentPage('restaurants');
+  $perPage = $perPage ?? 5;
+  $noAwal = 1 + ($perPage * ($currentPage - 1));
+?>
+
 <div class="page-header">
   <h3 class="page-title">Restaurants</h3>
   <nav aria-label="breadcrumb">
@@ -11,17 +17,24 @@
   </nav>
 </div>
 
-
-
-
 <div class="row">
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body p-3">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="card-title mb-0">Data Restaurant's</h4>
-          <a href="<?= base_url('restaurants/create'); ?>" class="btn btn-primary btn-sm">
-            Tambah restaurant
+          <div class="col">
+            <h4 class="card-title mb-0">Data Restaurant's</h4>
+          </div>
+          <div class="col-auto">
+            <form class="input-group btn-md m-8" action="<?= base_url('restaurants'); ?>" method="get">
+                <div class="input-group-prepend">
+                    <div class="input-group-text mdi mdi-magnify"></div>
+                </div>
+                   <input type="text" name="keyword" class="form-control" value="<?= $keyword ?? '' ?>">
+            </form>
+          </div>
+          <a href="<?= base_url('restaurants/create'); ?>" class="btn btn-primary m-1">
+            <i class="mdi mdi-plus-circle"></i>Tambah restaurant
           </a>
         </div>
 
@@ -64,6 +77,9 @@
                 <?php endif; ?>
             </tbody>
           </table>
+          <div class="mt-3">
+            <?= $pager->links('restaurants', 'bootstrap'); ?>
+          </div>
         </div>
       </div>
     </div>

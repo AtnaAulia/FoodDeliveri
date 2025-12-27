@@ -5,15 +5,15 @@
 <div class="d-flex justify-content-between align-items-center mb-3 m-3">
     <h4 class="mb-0">Tambah Menu's</h4>
     <a href="<?= base_url('menus'); ?>" class="btn btn-secondary btn-sm">
-        <i class="bi bi-arrow-left me-1"></i> Back
+        <i class="mdi mdi-arrow-left"></i> Back
     </a>
 </div>
 
 <div class="card">
     <div class="card-body p-3">
-        <form action="<?= base_url('menus/insert'); ?>" method="post">
+        <form action="<?= base_url('menus/insert'); ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
-            <!-- Nama Anggota -->
+            <!-- Nama Menus -->
              <div class="mb-3">
                 <label class="form-label">Restaurant Name</label>
                 <select class="form-control" name="restaurants_id" class="form-select" required>
@@ -29,17 +29,28 @@
                 <label class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" required>
              </div>
-            <!-- Email -->
-             <div class="mb-3">
+            <!-- Description -->
+            <div class="mb-3">
                 <label class="form-label">Description</label>
                 <input type="text" name="description" class="form-control" required>
-             </div>
+            </div>
             <!-- Price -->
-             <div class="mb-3">
+            <div class="mb-3">
                 <label class="form-label">Price</label>
                 <input type="number" name="price" class="form-control" required>
-             </div>
-
+            </div>
+            <!-- COVER -->
+            <div class="form-group">
+              <label>File upload</label>
+              <input type="file" name="cover" class="file-upload-default">
+              <div class="input-group col-xs-12">
+                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                <span class="input-group-append">
+                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                </span>
+              </div>
+              <small class="text-muted">Boleh dikosongkan jika tidak ada gambar menu.</small>
+            </div>
             <!-- Tombol simpan dan reset -->
             <button type="submit" class="btn btn-primary">Simpan Data</button>
             <button type="reset" class="btn btn-outline-secondary">Reset</button>

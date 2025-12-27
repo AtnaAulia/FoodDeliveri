@@ -21,4 +21,17 @@ class DriversModel extends Model
 
     // Dates
     protected $useTimestamps = true;
+    public function getDrivers($perPage, $group, $keyword = null) {
+        $builder = $this->select('drivers.*');
+
+        if(!empty($keyword)) {
+            $builder = $builder->groupStart()
+            ->like('name', $keyword)
+            ->orLike('phone', $keyword)
+            ->orLike('vehicle_plate', $keyword)
+            ->orLike('status', $keyword)
+            ->groupEnd();
+        }
+        return $builder->paginate($perPage, $group);
+    }
 }

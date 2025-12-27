@@ -8,12 +8,18 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class MenusController extends BaseController
 {
-    public function index()
-    {
-        //Menampilkan Seluruh Data Menus Dengan Join Table Dari Model
-        $menusModel = new \App\Models\MenusModel(); //menghubungkan file model ke controller
-        $data['menus'] = $menusModel->getMenus(); //Join Table dari Model
-        return view('menus/index', $data); //Mengirimkan data ke folder menus/index.php
+    public function index() {
+        $menusModel = new \App\Models\MenusModel();
+        $keyword = $this->request->getGet('keyword');
+        $data = [
+          'title' => 'Menus',
+          'subtitle' => 'Data Menus',
+          'menus' => $menusModel->getMenus(5, 'menus', $keyword),
+          'pager' => $menusModel->pager,
+          'perPage' => 5,
+          'keyword' => $keyword
+        ];
+        return view('menus/index', $data);
     }
 
     public function create()
@@ -32,11 +38,26 @@ class MenusController extends BaseController
     {
         $menusModel = new \App\Models\MenusModel();
         // di bawah ini adalah query INSERT INTO versi codeigniter
-        $menusModel->insert([
+
+        // ambil file gambar dari form
+        $coverFile = $this->request->getFile('cover');
+        $coverName = null; //default jika tidak ada cover yang tidak diupload
+
+        if ($coverFile && $coverFile->isValid() && !$coverFile->hasMoved()) 
+        {
+            //nama file random agar tidak terjadi duplikasi
+            $coverName = $coverFile->getRandomName();
+
+            //simpan file upload ke folder public/image/cover
+            $coverFile->move(FCPATH. 'image/cover', $coverName);
+        }
+
+        $menusModel->save([
             'restaurants_id' => $this->request->getPost('restaurants_id'),
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'price' => $this->request->getPost('price')
+            'price' => $this->request->getPost('price'),
+            'cover' => $coverName
         ]);
         //Mengembalikan ke index buku dengan flash massage "success" pada main.php
         return redirect()->to('/menus')->with('success', 'Data Buku Berhasil Disimpan');

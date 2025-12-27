@@ -5,6 +5,7 @@
   <title><?= esc($title ?? 'Dashboard') ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="<?= base_url('assets/css/toast.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/vendors/jvectormap/jquery-jvectormap.css') ?>">
@@ -17,21 +18,25 @@
 
 <body>
 <div class="container-scroller">
+  
+  <!-- TOAST -->
+   <?= view('components/toast') ?>
 
   <!-- SIDEBAR KIRI -->
   <?= $this->include('layout/sidebar'); ?>
-
+  
   <!-- AREA KANAN -->
   <div class="container-fluid page-body-wrapper">
-
+    
     <!-- TOPBAR -->
     <?= $this->include('layout/navbar'); ?>
-
+    
     <!-- KONTEN -->
     <div class="main-panel">
       <div class="content-wrapper">
         <?= $this->renderSection('content'); ?>
       </div>
+     
 
       <!-- FOOTER KANAN -->
       <?= $this->include('layout/footer'); ?>
@@ -40,6 +45,7 @@
   </div>
 </div>
 
+<script src="<?= base_url('assets/js/toast.js') ?>"></script>
 <script src="<?= base_url('assets/vendors/js/vendor.bundle.base.js') ?>"></script>
 <script src="<?= base_url('assets/vendors/chart.js/Chart.min.js') ?>"></script>
 <script src="<?= base_url('assets/vendors/progressbar.js/progressbar.min.js') ?>"></script>
@@ -47,7 +53,9 @@
 <script src="<?= base_url('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') ?>"></script>
 <script src="<?= base_url('assets/vendors/owl-carousel-2/owl.carousel.min.js') ?>"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('assets/js/off-canvas.js') ?>"></script>
+<script src="<?= base_url('assets/js/file-upload.js'); ?>"></script>
 <script src="<?= base_url('assets/js/hoverable-collapse.js') ?>"></script>
 <script src="<?= base_url('assets/js/misc.js') ?>"></script>
 <script src="<?= base_url('assets/js/settings.js') ?>"></script>

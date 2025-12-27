@@ -8,11 +8,18 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class DriversController extends BaseController
 {
-    public function index()
-    {
+    public function index() {
         $driversModel = new \App\Models\DriversModel();
-        $drivers = $driversModel->findAll();
-        return view('drivers/index', ['drivers' => $drivers]);
+        $keyword = $this->request->getGet('keyword');
+        $data = [
+            'title' => 'Drivers',
+            'subtitle' => 'Data Drivers',
+            'drivers' => $driversModel->getDrivers(5, 'drivers', $keyword),
+            'pager' => $driversModel->pager,
+            'perPage' => 5,
+            'keyword' => $keyword
+        ];
+        return view('drivers/index', $data);
     }
 
     public function create()

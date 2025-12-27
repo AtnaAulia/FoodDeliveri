@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h4 class="mb-0">Update Customers</h4>
     <a href="<?= base_url('customers') ?>" class="btn btn-secondary btn-sm">
-        <i class="bi bi-arrow-left me-1"></i> Back
+        <i class="mdi mdi-arrow-left me-1"></i> Back
     </a>
 </div>
 
