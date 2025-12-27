@@ -96,7 +96,7 @@ class CustomersController extends BaseController
         }
         $customersModel->delete($id);
         return redirect()->to('/customers')->with('toast', [
-            'type' => 'error',
+            'type' => 'delete',
             'title' => 'Dihapus',
             'message' => 'Data customer berhasil dihapus'
         ]);

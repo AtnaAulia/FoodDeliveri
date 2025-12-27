@@ -45,7 +45,11 @@ class RestaurantsController extends BaseController
             
         ]);
         //Mengembalikan ke index buku dengan flash massage "success" pada main.php
-        return redirect()->to('/restaurants')->with('success', 'Data Kategori Berhasil Disimpan');
+        return redirect()->to('/restaurants')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data Restaurants berhasil ditambahkan'
+        ]);
     }
 
     public function edit($id)
@@ -75,7 +79,11 @@ class RestaurantsController extends BaseController
             'opening_hours' => $this->request->getPost('opening_hours'),
             'status' => $this->request->getPost('status'),
         ]);
-        return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Diubah');
+        return redirect()->to('/restaurants')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data restaurants berhasil diperbarui'
+        ]);
     }
 //perbaikan delete
     public function delete($id)
@@ -86,6 +94,10 @@ class RestaurantsController extends BaseController
             throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
         }
         $restaurantsModel->delete($id);
-        return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Dihapus');
+        return redirect()->to('/restaurants')->with('toast', [
+            'type' => 'delete',
+            'title' => 'Dihapus',
+            'message' => 'Data restaurants berhasil dihapus'
+        ]);
     }
 }

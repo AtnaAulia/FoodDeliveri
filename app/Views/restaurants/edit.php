@@ -32,15 +32,13 @@
                 <label class="form-label">Opening Hours</label>
                 <input type="text" name="opening_hours" class="form-control" value="<?= esc($restaurants['opening_hours']) ?>" required>
             </div>
-
             <div class="mb-3">
                 <label class="form-label">Status</label>
-                <select class="form-control" name="status" id="" class="form-select" value="<?= $restaurants['status'] ?>">
-                    <option value="<?= $restaurants['status']?>"><?= $restaurants['status'] ?></option>
-                    <option value="beroprasi">Beroprasi</option>
-                    <option value="istirahat">Istirahat</option>
-                    <option value="tutup">Tutup</option>
-                </select>
+                    <select class="form-control" name="status" class="form-select" value="<?= $restaurants['status'] ?>">
+                      <option value="Open" <?= $restaurants['status']=='available'?'selected':'' ?>>Open</option>
+                      <option value="Rest" <?= $restaurants['status']=='busy'?'selected':'' ?>>Rest</option>
+                      <option value="Close" <?= $restaurants['status']=='offline'?'selected':'' ?>>Close</option>
+                    </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Data</button>
