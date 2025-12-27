@@ -21,12 +21,22 @@ class Menus extends Migration
             'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 150,
+                'null' => true
             ],
+            'cover' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => true
+            ],
+
             'description' => [
                 'type' => 'TEXT',
+                'null' => true
             ],
             'price' => [
                 'type' => 'DECIMAL',
+                'null' => true,
+                'unsigned' => true
             ],
             'is_available' => [
                 'type' => 'VARCHAR',

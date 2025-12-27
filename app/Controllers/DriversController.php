@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class DriversController extends BaseController
@@ -68,10 +69,14 @@ class DriversController extends BaseController
         ]);
         return redirect()->to('/drivers')->with('success', 'Data Drivers Berhasil Diubah');
     }
-
+//perbaikan delete
     public function delete($id)
     {
         $driversModel = new \App\Models\DriversModel();
+        $driver = $driversModel->find($id);
+        if (!$driver){
+            throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
+        }
         $driversModel->delete($id);
         return redirect()->to('/drivers')->with('success', 'Data Drivers Berhasil Dihapus');
     }

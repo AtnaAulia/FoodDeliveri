@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class RestaurantsController extends BaseController
@@ -69,10 +70,14 @@ class RestaurantsController extends BaseController
         ]);
         return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Diubah');
     }
-
+//perbaikan delete
     public function delete($id)
     {
         $restaurantsModel = new \App\Models\RestaurantsModel();
+        $restaurants = $restaurantsModel->find($id);
+        if(!$restaurants){
+            throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
+        }
         $restaurantsModel->delete($id);
         return redirect()->to('/restaurants')->with('success', 'Data Restaurants Berhasil Dihapus');
     }

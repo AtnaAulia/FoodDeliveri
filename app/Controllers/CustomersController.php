@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class CustomersController extends BaseController
@@ -83,16 +84,14 @@ class CustomersController extends BaseController
     'message' => 'Data Customers Berhasil Diubah'
     ]);
     }
-
+//perbaikan delete
     public function delete($id) {
         $customersModel = new \App\Models\CustomersModel();
+        $customer = $customersModel->find($id);
+        if(!$customer){
+            throw PageNotFoundException::forPageNotFound("Data Tidak ditemukan");
+        }
         $customersModel->delete($id);
-        return redirect()->to('/customers')->with('toast', [
-            'type' => 'error',
-            'title' => 'gagal',
-            'message' => 'Data Customers Berhasil Dihapus'
-        ]);
-
-        return redirect()->back();
+        return redirect()->to('/customers')->with('success','Data Customer berhasil dihapus');
     }
 }
