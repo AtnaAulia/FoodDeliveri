@@ -44,7 +44,11 @@ class DriversController extends BaseController
             
         ]);
         //Mengembalikan ke index buku dengan flash massage "success" pada main.php
-        return redirect()->to('/drivers')->with('success', 'Data Kategori Berhasil Disimpan');
+         return redirect()->to('/drivers')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data Drivers berhasil ditambahkan'
+        ]);
     }
 
      public function edit($id)
@@ -74,7 +78,11 @@ class DriversController extends BaseController
             'vehicle_plate' => $this->request->getPost('vehicle_plate'),
             'status' => $this->request->getPost('status'),
         ]);
-        return redirect()->to('/drivers')->with('success', 'Data Drivers Berhasil Diubah');
+        return redirect()->to('/drivers')->with('toast', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Data Drivers berhasil diperbarui'
+        ]);
     }
 //perbaikan delete
     public function delete($id)
@@ -85,6 +93,10 @@ class DriversController extends BaseController
             throw PageNotFoundException::forPageNotFound("Data tidak ditemukan");
         }
         $driversModel->delete($id);
-        return redirect()->to('/drivers')->with('success', 'Data Drivers Berhasil Dihapus');
+        return redirect()->to('/drivers')->with('toast', [
+            'type' => 'delete',
+            'title' => 'Dihapus',
+            'message' => 'Data Drivers berhasil dihapus'
+        ]);
     }
 }

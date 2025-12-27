@@ -21,13 +21,23 @@
 
 /* ICON */
 .custom-toast-icon {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    color: #fff;
+    font-size: 18px;
+}
+/* DELETE = HIJAU */
+.custom-toast.delete {
+    background: #e7f7ec;
+    color: #d09696;
+}
+
+.custom-toast.delete .custom-toast-icon {
+    background: #ffbaba;
 }
 
 /* TEXT */

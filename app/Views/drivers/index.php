@@ -48,7 +48,7 @@
                   <th>Phone</th>
                   <th>vehicle_plate</th>
                   <th>Status</th>
-                  <th>Aksi</th>
+                  <th class="text-center">Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@
                             <td><?= esc($row['phone']); ?></td>
                             <td><?= esc($row['vehicle_plate']); ?></td>
                             <td><?= esc($row['status']); ?></td>
-                            <td>
+                            <td class="text-center">
                                 <a href="<?= base_url('drivers/edit/' . $row['driver_id']); ?>" class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
