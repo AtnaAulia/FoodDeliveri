@@ -67,28 +67,28 @@
 
 <li class="nav-item menu-items <?= ($segment === 'customers') ? 'active' : '' ?>">
   <a class="nav-link " href="<?= base_url('customers') ?>">
-    <span class="menu-icon"><i class="mdi mdi-playlist-play"></i></span>
+    <span class="menu-icon"><i class="mdi mdi-account-group"></i></span>
     <span class="menu-title">Customer</span>
   </a>
 </li>
 
 <li class="nav-item menu-items <?= ($segment === 'menus') ? 'active' : '' ?>">
   <a class="nav-link " href="<?= base_url('menus') ?>">
-    <span class="menu-icon"><i class="mdi mdi-table-large"></i></span>
+    <span class="menu-icon"><i class="mdi mdi-book"></i></span>
     <span class="menu-title">Menus</span>
   </a>
 </li>
 
 <li class="nav-item menu-items <?= ($segment === 'drivers') ? 'active' : '' ?>">
   <a class="nav-link " href="<?= base_url('drivers') ?>">
-    <span class="menu-icon"><i class="mdi mdi-chart-bar"></i></span>
+    <span class="menu-icon"><i class="mdi mdi-car-back"></i></span>
     <span class="menu-title">Drivers</span>
   </a>
 </li>
 
 <li class="nav-item menu-items <?= ($segment === 'restaurants') ? 'active' : '' ?>">
   <a class="nav-link " href="<?= base_url('restaurants') ?>">
-    <span class="menu-icon"><i class="mdi mdi-contacts"></i></span>
+    <span class="menu-icon"><i class="mdi mdi-silverware-fork-knife"></i></span>
     <span class="menu-title">Restaurants</span>
   </a>
 </li>

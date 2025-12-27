@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/vendors/owl-carousel-2/owl.theme.default.min.css') ?>">
 
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
-  <link rel="shortcut icon" href="<?= base_url('assets/images/favicon.png') ?>">
+  <link rel="shortcut icon" href="<?= base_url('assets/images/logo.png') ?>">
 
 </head>
 <body>

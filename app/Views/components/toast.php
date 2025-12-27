@@ -13,6 +13,9 @@ $message = esc($toast['message'] ?? '');
             <?php if ($type === 'success'): ?>✓<?php endif; ?>
             <?php if ($type === 'error'): ?>✕<?php endif; ?>
             <?php if ($type === 'warning'): ?>!<?php endif; ?>
+            <?php if ($type === 'delete'): ?>
+                🗑️
+            <?php endif; ?>
             <?php if ($type === 'default'): ?>i<?php endif; ?>
         </div>
 
