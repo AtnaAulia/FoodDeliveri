@@ -49,7 +49,6 @@
                 <th>Cover</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Tersedia</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -72,7 +71,6 @@
                             </td>
                             <td><?= esc($row['description']); ?></td>
                             <td><?= esc($row['price']); ?></td>
-                            <td><?= esc($row['is_available']); ?></td>
                             <td>
                                 <a href="<?= base_url('menus/edit/' . $row['menus_id']); ?>" class="btn btn-sm btn-warning">
                                     Edit
