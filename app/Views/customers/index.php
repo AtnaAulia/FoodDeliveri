@@ -61,11 +61,11 @@
                     <td><?= esc($row['email']) ?></td>
                     <td><?= esc($row['address']) ?></td>
                     <td class="text-center">
-                      <a href="<?= base_url('customers/edit/'.$row['customers_id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-                      <a href="<?= base_url('customers/delete/'.$row['customers_id']) ?>" 
-                         class="btn btn-danger btn-sm"
-                         onclick="return confirm('Yakin hapus data?')">
-                         Hapus
+                      <a href="<?= base_url('customers/edit/' . $row['customers_id']); ?>" class="text-warning me-3"  title="Edit">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a href="<?= base_url('customers/delete/' . $row['customers_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
+                        <i class="bi bi-trash"></i>
                       </a>
                     </td>
                   </tr>

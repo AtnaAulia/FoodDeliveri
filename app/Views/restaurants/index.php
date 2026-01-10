@@ -59,14 +59,27 @@
                         <td><?= esc($row['phone']); ?></td>
                         <td><?= esc($row['address']); ?></td>
                         <td><?= esc($row['opening_hours']); ?></td>
-                        <td><?= esc($row['status']); ?></td>
                         <td>
-                            <a href="<?= base_url('restaurants/edit/' . $row['restaurants_id']); ?>" class="btn btn-sm btn-warning">
-                                Edit
-                            </a>
-                            <a href="<?= base_url('restaurants/delete/' . $row['restaurants_id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin Hapus Data?')">
-                                Hapus
-                            </a>
+                          <?php 
+                            $status = esc($row['status']);
+                            if ($status == 'Beroperasi') {
+                              echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Beroperasi</span>';
+                            } elseif ($status == 'Tutup') {
+                              echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Tutup</span>';
+                            } elseif ($status == 'Istirahat') {
+                              echo '<span class="badge badge-warning text-white" style="border-radius: 20px; padding: 5px 15px;">Istirahat</span>';
+                            } else {
+                              echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <a href="<?= base_url('restaurants/edit/' . $row['restaurants_id']); ?>" class="text-warning me-3"  title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+                          <a href="<?= base_url('restaurants/delete/' . $row['restaurants_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
+                            <i class="bi bi-trash"></i>
+                          </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
