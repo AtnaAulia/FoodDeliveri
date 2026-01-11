@@ -88,8 +88,8 @@
 
               <h4>Hapus Data Customer</h4>
               <div class="modal-gif">
+                <!-- PR TEST POP-UP -->
                 <img class="center" src="<?= base_url('assets/images/delete.gif'); ?>" alt="Warning">
-                
               </div>
 
               <p class="text-muted">Apakah Anda yakin ingin menghapus data ini?</p>
