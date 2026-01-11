@@ -85,6 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<!-- modal delete pop up  !-->
+<script> const BASE_URL = "<?= base_url(); ?>";</script>
+<script src="<?= base_url('assets/js/modal-delete.js') ?>"></script>
+
 
 
 </body>
