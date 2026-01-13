@@ -21134,4 +21134,77 @@ div.tagsinput {
   flex-grow: 1; 
 }
 
+/* pop up style */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 400px;
+  max-width: 90%;
+
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.25s ease;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+  border-radius: 8px;
+  padding: 10px 0;
+}
+
+.modal-box h4 {
+  color: #111 !important;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.modal-box p {
+  color: #444 !important;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.modal-gif {
+  display: flex;
+  justify-content: center; /* tengah horizontal */
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-gif img {
+  width: 90px;
+  height: auto;
+  display: block;
+}
+
+
+.modal-overlay.show .modal-box {
+  transform: translateY(0) scale(1);
+}
+
 /*# sourceMappingURL=maps/style.css.map */

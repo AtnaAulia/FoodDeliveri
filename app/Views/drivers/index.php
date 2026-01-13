@@ -46,7 +46,7 @@
                   <th>No.</th>
                   <th>Name</th>
                   <th>Phone</th>
-                  <th>vehicle_plate</th>
+                  <th>vehicle Plate</th>
                   <th>Status</th>
                   <th class="text-center">Aksi</th>
               </tr>
@@ -58,13 +58,26 @@
                             <td><?= esc($row['name']); ?></td>
                             <td><?= esc($row['phone']); ?></td>
                             <td><?= esc($row['vehicle_plate']); ?></td>
-                            <td><?= esc($row['status']); ?></td>
+                            <td>
+                              <?php 
+                                $status = esc($row['status']);
+                                if ($status == 'Online') {
+                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Online</span>';
+                                } elseif ($status == 'Offline') {
+                                  echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Offline</span>';
+                                } elseif ($status == 'Busy') {
+                                  echo '<span class="badge badge-warning text-white" style="border-radius: 20px; padding: 5px 15px;">Busy</span>';
+                                } else {
+                                  echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
+                                }
+                              ?>
+                            </td>
                             <td class="text-center">
-                                <a href="<?= base_url('drivers/edit/' . $row['driver_id']); ?>" class="btn btn-sm btn-warning">
-                                    Edit
+                                <a href="<?= base_url('drivers/edit/' . $row['driver_id']); ?>" class="text-warning me-3"  title="Edit">
+                                  <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="<?= base_url('drivers/delete/' . $row['driver_id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin Hapus Data?')">
-                                    Hapus
+                                <a href="<?= base_url('drivers/delete/' . $row['driver_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
+                                  <i class="bi bi-trash"></i>
                                 </a>
                             </td>
                         </tr>

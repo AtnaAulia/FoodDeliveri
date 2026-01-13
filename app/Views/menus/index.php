@@ -49,6 +49,7 @@
                 <th>Cover</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -72,11 +73,23 @@
                             <td><?= esc($row['description']); ?></td>
                             <td>Rp<?= number_format($row['price'],0,',','.') ; ?></td>
                             <td>
-                                <a href="<?= base_url('menus/edit/' . $row['menus_id']); ?>" class="btn btn-sm ">
-                                    Edit
+                              <?php 
+                                $status = esc($row['is_available']);
+                                if ($status == 'Available') {
+                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Available</span>';
+                                } elseif ($status == 'Not Available') {
+                                  echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Not Available</span>';
+                                } else {
+                                  echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
+                                }
+                              ?>
+                            </td> 
+                            <td>
+                               <a href="<?= base_url('menus/edit/' . $row['menus_id']); ?>" class="text-warning me-3"  title="Edit">
+                                  <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="<?= base_url('menus/delete/' . $row['menus_id']); ?>" class="btn btn-sm " onclick="return confirm('Yakin Hapus Data?')">
-                                    Hapus
+                                <a href="<?= base_url('menus/delete/' . $row['menus_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
+                                  <i class="bi bi-trash"></i>
                                 </a>
                             </td>
                         </tr>
