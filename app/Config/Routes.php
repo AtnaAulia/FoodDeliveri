@@ -39,3 +39,11 @@ $routes->get('menus/edit/(:num)', 'MenusController::edit/$1'); //Menarik form ub
 $routes->post('menus/update/(:num)', 'MenusController::update/$1'); //Mengirim data update ke database
 $routes->Get('menus/delete/(:segment)', 'MenusController::delete/$1'); //menghapus data
 
+//orders
+$routes->get('orders','OrdersController::index');
+$routes->get('orders/create','OrdersController::create');
+$routes->post('orders/insert','OrdersController::insert');
+$routes->get('orders/DaftarMenu/(:num)','OrdersController::DaftarMenu/$1');
+$routes->get('orders/detail/(:num)','OrdersController::detail/$1');
+$routes->get('orders/kirim/(:num)','OrdersController::kirim/$1');
+$routes->get('orders/selesai/(:num)','OrdersController::selesai/$1');

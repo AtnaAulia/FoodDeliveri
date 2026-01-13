@@ -71,7 +71,7 @@
                                 <?php endif ?>
                             </td>
                             <td><?= esc($row['description']); ?></td>
-                            <td><?= esc($row['price']); ?></td>
+                            <td>Rp<?= number_format($row['price'],0,',','.') ; ?></td>
                             <td>
                               <?php 
                                 $status = esc($row['is_available']);

@@ -35,9 +35,9 @@
             <div class="mb-3">
                 <label class="form-label">Status</label>
                     <select class="form-control" name="status" class="form-select" value="<?= $restaurants['status'] ?>">
-                      <option value="Beroperasi" <?= $restaurants['status']=='Beroperasi'?'selected':'' ?>>Beroperasi</option>
-                      <option value="Tutup" <?= $restaurants['status']=='Tutup'?'selected':'' ?>>Tutup</option>
-                      <option value="Istirahat" <?= $restaurants['status']=='Istirahat'?'selected':'' ?>>Istirahat</option>
+                      <option value="Open" <?= $restaurants['status']=='Open'?'selected':'' ?>>beroperasi</option>
+                      <option value="Rest" <?= $restaurants['status']=='Rest'?'selected':'' ?>>tutup</option>
+                      <option value="Close" <?= $restaurants['status']=='Close'?'selected':'' ?>>istirahat </option>
                     </select>
             </div>
 

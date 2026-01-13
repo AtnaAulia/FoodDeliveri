@@ -31,7 +31,6 @@ class Drivers extends Migration
         'status' => [
             'type' => 'VARCHAR',
             'constraint' => 50,
-            'default' => 'Available',
             'null' => true
         ],
         'created_at' => [
