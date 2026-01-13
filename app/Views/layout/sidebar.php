@@ -92,6 +92,12 @@
     <span class="menu-title">Restaurants</span>
   </a>
 </li>
+<li class="nav-item menu-items <?= ($segment === 'orders') ? 'active' : '' ?>">
+  <a class="nav-link " href="<?= base_url('orders') ?>">
+    <span class="menu-icon"><i class="mdi mdi-silverware-fork-knife"></i></span>
+    <span class="menu-title">Orders</span>
+  </a>
+</li>
   </ul>
 
 </nav>

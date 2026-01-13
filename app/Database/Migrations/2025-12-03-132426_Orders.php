@@ -15,9 +15,9 @@ class Orders extends Migration
             'auto_increment' => true
         ],
         'order_number' => [
-            'type' => 'INT',
+            'type' => 'VARCHAR',
+            'constraint' => 60,
             'null' => true,
-            'unsigned' => true
         ],
         'customers_id' => [
             'type' => 'INT',
@@ -42,7 +42,6 @@ class Orders extends Migration
         'status' => [
             'type' => 'VARCHAR',
             'constraint' => 50,
-            'default' => 'Pending',
             'null' => true
         ],
         'total_amount' => [

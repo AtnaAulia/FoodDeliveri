@@ -46,13 +46,13 @@
                 <label class="form-label">Status</label>
                 <select name="is_available" class="form-control">
                     <option value="Available"
-                    <?= $menu['is_available'] == 'Available' ? 'selected' : '' ?>>
-                    Available
+                    <?= $menu['is_available'] == 'Yes' ? 'selected' : '' ?>>
+                    Yes
                 </option>
                 
                 <option value="Not Available"
-                <?= $menu['is_available'] == 'Not Available' ? 'selected' : '' ?>>
-                Not Available
+                <?= $menu['is_available'] == 'No' ? 'selected' : '' ?>>
+                No
             </option>
         </select>
     </div>
