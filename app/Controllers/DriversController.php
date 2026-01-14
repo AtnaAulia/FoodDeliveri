@@ -99,7 +99,7 @@ class DriversController extends BaseController
         return redirect()->to('/drivers')->with('toast', [
             'type' => 'delete',
             'title' => 'Dihapus',
-            'message' => 'Data Drivers berhasil dihapus'
+            'message' => 'Data Driver berhasil dihapus'
         ]);
     }
 }

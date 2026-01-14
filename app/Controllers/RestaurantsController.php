@@ -97,7 +97,7 @@ class RestaurantsController extends BaseController
         return redirect()->to('/restaurants')->with('toast', [
             'type' => 'delete',
             'title' => 'Dihapus',
-            'message' => 'Data restaurants berhasil dihapus'
+            'message' => 'Data restaurant berhasil dihapus'
         ]);
     }
 }
