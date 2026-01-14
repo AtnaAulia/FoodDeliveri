@@ -76,8 +76,8 @@
                                 <a href="<?= base_url('drivers/edit/' . $row['driver_id']); ?>" class="text-warning me-3"  title="Edit">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="<?= base_url('drivers/delete/' . $row['driver_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
-                                  <i class="bi bi-trash"></i>
+                                <a href="javascript:void(0)" class="text-danger btn-delete" data-url="drivers/delete/<?= $row['driver_id']; ?>">
+                                   <i class="bi bi-trash"></i>
                                 </a>
                             </td>
                         </tr>

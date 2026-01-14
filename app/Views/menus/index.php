@@ -88,7 +88,7 @@
                                <a href="<?= base_url('menus/edit/' . $row['menus_id']); ?>" class="text-warning me-3"  title="Edit">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a href="<?= base_url('menus/delete/' . $row['menus_id']); ?>" class="text-danger" title="Hapus" onclick="return confirm('Yakin Hapus Data?')">
+                                <a href="javascript:void(0)" class="text-danger btn-delete" data-url="menus/delete/<?= $row['menus_id']; ?>" title="Hapus">
                                   <i class="bi bi-trash"></i>
                                 </a>
                             </td>
@@ -126,6 +126,25 @@
           </table>
           <div class="mt-3">
                 <?= $pager->links('drivers', 'bootstrap'); ?>
+          </div>
+          <!-- MODAL DELETE -->
+          <div id="deleteModal" class="modal-overlay">
+            <div class="modal-box">
+
+              <h4>Hapus Data Customer</h4>
+              <div class="modal-gif">
+                <!-- PR TEST POP-UP -->
+                <img class="center" src="<?= base_url('assets/images/delete.gif'); ?>" alt="Warning">
+              </div>
+
+              <p class="text-muted">Apakah Anda yakin ingin menghapus data ini?</p>
+
+              <div class="modal-actions">
+                <button id="btnCancel" class="btn btn-secondary w-50">Batal</button>
+                <a id="btnConfirmDelete" class="btn btn-danger w-50">Hapus</a>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

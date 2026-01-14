@@ -64,8 +64,8 @@
                       <a href="<?= base_url('customers/edit/' . $row['customers_id']); ?>" class="text-warning me-3"  title="Edit">
                         <i class="bi bi-pencil-square"></i>
                       </a>
-                      <a href="javascript:void(0)" class="text-danger btn-delete" data-id="<?= $row['customers_id']; ?>" title="Hapus">
-                          <i class="bi bi-trash"></i>
+                      <a href="javascript:void(0)" class="text-danger btn-delete" data-url="customers/delete/<?= $row['customers_id']; ?>" title="Hapus">
+                        <i class="bi bi-trash"></i>
                       </a>
                     </td>
                   </tr>
