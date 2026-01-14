@@ -92,7 +92,7 @@
                         <input type="text" class="form-control subtotal" name="subtotal[]" readonly>
                 </div>
                 <div class="col-md-3 d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-outline-danger btnHapusBaris">
+                    <button type="button" class="btn btn-sm btn-outline-danger mt-2 btnHapusBaris">
                         Hapus
                     </button>
                 </div>
