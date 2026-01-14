@@ -123,7 +123,7 @@ class MenusController extends BaseController
         return redirect()->to('/menus')->with('toast', [
             'type' => 'delete',
             'title' => 'Dihapus',
-            'message' => 'Data customer berhasil dihapus'
+            'message' => 'Data Menu berhasil dihapus'
         ]);
     }
 }
