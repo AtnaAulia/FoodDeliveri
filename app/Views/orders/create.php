@@ -17,7 +17,7 @@
             <?= csrf_field() ?>
             <div class="mb-3">
             <label class="form-label">Restaurants</label>
-            <select name="restaurants_id" id="restaurants" required>
+            <select class="form-control" name="restaurants_id" id="restaurants" required>
                 <option value="">- Pilih Restoran -</option>
                 <?php foreach($restaurants as $data): ?>
                     <option value="<?= $data['restaurants_id'] ?>">
