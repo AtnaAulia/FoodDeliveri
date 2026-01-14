@@ -75,9 +75,9 @@
                             <td>
                               <?php 
                                 $status = esc($row['is_available']);
-                                if ($status == 'Available') {
+                                if ($status == 'Yes') {
                                   echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Available</span>';
-                                } elseif ($status == 'Not Available') {
+                                } elseif ($status == 'No') {
                                   echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Not Available</span>';
                                 } else {
                                   echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
