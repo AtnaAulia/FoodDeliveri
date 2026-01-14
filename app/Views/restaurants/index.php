@@ -62,12 +62,12 @@
                         <td>
                           <?php 
                             $status = esc($row['status']);
-                            if ($status == 'Beroperasi') {
-                              echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Beroperasi</span>';
-                            } elseif ($status == 'Tutup') {
-                              echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Tutup</span>';
-                            } elseif ($status == 'Istirahat') {
-                              echo '<span class="badge badge-warning text-white" style="border-radius: 20px; padding: 5px 15px;">Istirahat</span>';
+                            if ($status == 'Open') {
+                              echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Open</span>';
+                            } elseif ($status == 'Close') {
+                              echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Close</span>';
+                            } elseif ($status == 'Rest') {
+                              echo '<span class="badge badge-warning text-white" style="border-radius: 20px; padding: 5px 15px;">Rest</span>';
                             } else {
                               echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
                             }
