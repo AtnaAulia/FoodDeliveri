@@ -76,9 +76,9 @@
                               <?php 
                                 $status = esc($row['is_available']);
                                 if ($status == 'Yes') {
-                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Available</span>';
+                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Yas</span>';
                                 } elseif ($status == 'No') {
-                                  echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">Not Available</span>';
+                                  echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">No</span>';
                                 } else {
                                   echo '<span class="badge badge-secondary" style="border-radius: 20px; padding: 5px 15px;">' . $status . '</span>';
                                 }
