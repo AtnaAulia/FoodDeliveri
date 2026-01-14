@@ -31,9 +31,9 @@
             <div class="mb-3">
                 <label class="form-label">Status</label>
                     <select class="form-control" name="status">
+                      <!--  -->
                       <option value="Online" <?= $driver['status']=='Online'?'selected':'' ?>>Online</option>
                       <option value="Offline" <?= $driver['status']=='Offline'?'selected':'' ?>>Offline</option>
-                      <option value="Busy" <?= $driver['status']=='Busy'?'selected':'' ?>>Busy</option>
                     </select>
             </div>
 

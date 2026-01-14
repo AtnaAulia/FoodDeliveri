@@ -34,4 +34,14 @@ class DriversModel extends Model
         }
         return $builder->paginate($perPage, $group);
     }
-}
+    public function setOnline($driver_id){
+            return $this->update($driver_id,['status' => 'Online']);
+    }
+    public function setOffline($driver_id)
+
+    {
+    return $this->update($driver_id,['status' => 'Offline']);
+
+
+    }
+    }
