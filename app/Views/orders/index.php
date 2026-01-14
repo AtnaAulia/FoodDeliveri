@@ -44,7 +44,7 @@
             <thead class="table-light">
               <tr>
                 <th>No.</th>
-                <th>No.Order</th>
+                <th>No. Order</th>
                 <th>Restaurant</th>
                 <th>Driver</th>
                 <th>Waktu Pemesanan</th>

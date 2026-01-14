@@ -71,12 +71,12 @@
                                 <?php endif ?>
                             </td>
                             <td><?= esc($row['description']); ?></td>
-                            <td>Rp<?= number_format($row['price'],0,',','.') ; ?></td>
+                            <td>Rp <?= number_format($row['price'],0,',','.') ; ?></td>
                             <td>
                               <?php 
                                 $status = esc($row['is_available']);
                                 if ($status == 'Yes') {
-                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Yas</span>';
+                                  echo '<span class="badge badge-success" style="border-radius: 20px; padding: 5px 15px;">Yes</span>';
                                 } elseif ($status == 'No') {
                                   echo '<span class="badge badge-danger" style="border-radius: 20px; padding: 5px 15px;">No</span>';
                                 } else {
