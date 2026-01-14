@@ -3,24 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnCancel = document.getElementById('btnCancel');
   const btnConfirm = document.getElementById('btnConfirmDelete');
 
-  if (!modal) return;
+  if (!modal || !btnConfirm) return;
 
   document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', function () {
-      const id = this.dataset.id;
+      const url = this.dataset.url;
+      if (!url) return;
 
-      btnConfirm.href = BASE_URL + 'customers/delete/' + id;
-      modal.classList.add('show'); 
+      btnConfirm.href = BASE_URL + url;
+      modal.classList.add('show');
     });
   });
 
-  btnCancel.addEventListener('click', () => {
-    modal.classList.remove('show'); 
+  btnCancel?.addEventListener('click', () => {
+    modal.classList.remove('show');
   });
 
   modal.addEventListener('click', e => {
     if (e.target === modal) {
-      modal.classList.remove('show'); 
+      modal.classList.remove('show');
     }
   });
 });
