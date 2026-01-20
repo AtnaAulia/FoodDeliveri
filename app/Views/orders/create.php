@@ -30,7 +30,7 @@
              <div class="row mb-3">
                 <div class="col-md-4">
                     <label class="form-label">Tanggal Pemesanan</label>
-                    <input type="date" name="order_time" class="form-control" value="<?= date('Ymd'); ?>">
+                    <input type="date" name="order_time" class="form-control" value="<?= date('Y-m-d'); ?>">
                 </div>
                 <div class="col-md-4">
                    <label class="form-label">Customers</label>

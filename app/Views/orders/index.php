@@ -24,7 +24,7 @@
       <div class="card-body p-3">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="col">
-            <h4 class="card-title mb-0">Data Menu's</h4>
+            <h4 class="card-title mb-0">Data Order's</h4>
           </div>
           <div class="col-auto">
             <form class="input-group btn-md m-8" action="<?= base_url('orders'); ?>" method="get">
