@@ -46,7 +46,7 @@
                   <th>No.</th>
                   <th>Name</th>
                   <th>Phone</th>
-                  <th>vehicle Plate</th>
+                  <th>Vehicle Plate</th>
                   <th>Status</th>
                   <th class="text-center">Aksi</th>
               </tr>

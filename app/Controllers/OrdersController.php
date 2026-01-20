@@ -87,7 +87,7 @@ class OrdersController extends BaseController
             'customers_id'     => $this->request->getPost('customers_id'),
             'restaurants_id'   => $this->request->getPost('restaurants_id'),
             'driver_id'        => $driver_id,
-            'order_time'       => $this->request->getPost('order_time'),
+            'order_time'       => $this->request->getPost('order_time') . ' ' . date('H:i:s'),
             'delivery_address' => $this->request->getPost('delivery_address'),
             'status'           => 'Diproses',
             'total_amount'     => $totalAmount,
