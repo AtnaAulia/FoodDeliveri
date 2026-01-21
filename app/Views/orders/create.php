@@ -29,7 +29,7 @@
 
             <!-- Nama Menus -->
             <div class="row mb-3">
-                <div class="col-md-4">
+                <div class="col-md-6">
                    <label class="form-label">Customers</label>
                    <select class="form-control" id="customers_id" name="customers_id" class="form-select" required>
                    <option value=""> - Select Customers - </option>
@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- Nama Alamat -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label  class="form-label">Alamat</label>
                     <input type="text" class="form-control" id="address" name="delivery_address"  > 
                 </div>
