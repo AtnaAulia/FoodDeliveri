@@ -23,5 +23,19 @@ class OrdersDetailModel extends Model
                     ->where('orders_id',$id)
                     ->findAll();
     }
+    public function menuLaris($restaurants_id)
+{
+    return $this->select('menus.name AS nama_menu, SUM(order_details.qty) AS total_terjual')
+                ->join('menus','menus.menus_id = order_details.menus_id')
+                ->join('orders','orders.orders_id = order_details.orders_id')
+                ->where('orders.restaurants_id', $restaurants_id)
+                ->where('orders.status', 'Selesai')
+                ->groupBy('menus.menus_id, menus.name')
+                ->orderBy('total_terjual', 'DESC')
+                ->limit(1)
+                ->get()
+                ->getRow();
+}
+
     
 }

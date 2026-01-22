@@ -47,3 +47,8 @@ $routes->get('orders/DaftarMenu/(:num)','OrdersController::DaftarMenu/$1');
 $routes->get('orders/detail/(:num)','OrdersController::detail/$1');
 $routes->post('orders/assignDriver/(:num)', 'OrdersController::assignDriver/$1'); // memilih driver dan menugaskannya untuk mengantar makanan
 $routes->get('orders/selesai/(:num)','OrdersController::selesai/$1');
+
+$routes->get('laporan/orders','LaporanController::orders');
+$routes->get('laporan/pendapatan','LaporanController::pendapatan');
+$routes->get('laporan/driver','LaporanController::driver');
+$routes->get('laporan/restoran','LaporanController::restaurants');
