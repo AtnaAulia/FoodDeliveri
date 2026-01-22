@@ -1,4 +1,5 @@
 <?php $segment =(string) service('uri')->getSegment(1); ?>
+<?php $segment2 = (string) service('uri')->getSegment(2); ?>
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -97,6 +98,30 @@
     <span class="menu-icon"><i class="mdi mdi-silverware-fork-knife"></i></span>
     <span class="menu-title">Orders</span>
   </a>
+</li>
+<li class="nav-item menu-items <?= ($segment === 'laporan') ? 'active' : '' ?>">
+  <a class="nav-link" data-toggle="collapse" href="#laporanMenu" aria-expanded="false" aria-controls="laporanMenu">
+    <span class="menu-icon"><i class="mdi mdi-file-chart"></i></span>
+    <span class="menu-title">Laporan</span>
+    <i class="menu-arrow"></i>
+  </a>
+  <div class="collapse <?= ($segment === 'laporan') ? 'show' : '' ?>" id="laporanMenu">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item <?= ($segment2 === 'restoran') ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('laporan/restoran') ?>">Laporan Restoran</a>
+      </li>
+      <li class="nav-item <?= ($segment2 === 'driver') ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('laporan/driver') ?>">Laporan Driver</a>
+      </li>
+      <li class="nav-item <?= ($segment2 === 'pendapatan') ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('laporan/pendapatan') ?>">Laporan Pendapatan</a>
+      </li>
+      <li class="nav-item <?= ($segment2 === 'orders') ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('laporan/orders') ?>">Laporan Order</a>
+      </li>
+    </ul>
+  </div>
+</li>
 </li>
   </ul>
 
