@@ -33,11 +33,16 @@ class LaporanController extends BaseController
 
     public function orders()
     {
-        $periode = $this->request->getGet('periode');
-        
+       $periode = $this->request->getGet('periode'); // format: 2026-01
 
-        $tanggal_mulai = date('Y-m-01', strtotime($periode));//awal bulan saat ini
-        $tanggal_selesai = date('Y-m-d',strtotime($periode));
+            if ($periode) {
+                    $tanggal_mulai   = $periode . '-01';
+                    $tanggal_selesai = date('Y-m-t', strtotime($tanggal_mulai));
+                } else {
+    // default bulan ini kalau belum pilih periode
+                    $tanggal_mulai   = date('Y-m-01');
+                    $tanggal_selesai = date('Y-m-t');
+                }
 
         $laporan = $this->ordersModel->laporanOrders($tanggal_mulai,$tanggal_selesai);
 
@@ -49,17 +54,23 @@ class LaporanController extends BaseController
             'laporan' => $laporan,
             'order_time' => date('Y-m-d')
         ];
+       
         return view('laporan/orders',$data);
     }
     public function pendapatan()
     {
-        $periode = $this->request->getGet('periode');
-        
+       $periode = $this->request->getGet('periode'); // format: 2026-01
 
-        $tanggal_mulai = date('Y-m-01', strtotime($periode));//awal bulan saat ini
-        $tanggal_selesai = date('Y-m-d',strtotime($periode));
+            if ($periode) {
+                    $tanggal_mulai   = $periode . '-01';
+                    $tanggal_selesai = date('Y-m-t', strtotime($tanggal_mulai));
+                } else {
+    // default bulan ini kalau belum pilih periode
+                    $tanggal_mulai   = date('Y-m-01');
+                    $tanggal_selesai = date('Y-m-t');
+                }
 
-        $laporan = $this->ordersModel->laporanPendapatan();
+        $laporan = $this->ordersModel->laporanPendapatan($tanggal_mulai,$tanggal_selesai);
 
         $data = [
             'title' => 'Laporan',
@@ -71,13 +82,18 @@ class LaporanController extends BaseController
     }
     public function driver()
     {
-        $periode = $this->request->getGet('periode');
-        
+        $periode = $this->request->getGet('periode'); // format: 2026-01
 
-        $tanggal_mulai = date('Y-m-01', strtotime($periode));//awal bulan saat ini
-        $tanggal_selesai = date('Y-m-d',strtotime($periode));
+            if ($periode) {
+                    $tanggal_mulai   = $periode . '-01';
+                    $tanggal_selesai = date('Y-m-t', strtotime($tanggal_mulai));
+                } else {
+    // default bulan ini kalau belum pilih periode
+                    $tanggal_mulai   = date('Y-m-01');
+                    $tanggal_selesai = date('Y-m-t');
+                }
 
-        $laporan = $this->ordersModel->laporanDriver();
+        $laporan = $this->ordersModel->laporanDriver($tanggal_mulai,$tanggal_selesai);
 
         $data = [
             'title' => 'Laporan',
@@ -89,13 +105,18 @@ class LaporanController extends BaseController
     }
     public function restaurants()
     {
-        $periode = $this->request->getGet('periode');
-        
+        $periode = $this->request->getGet('periode'); // format: 2026-01
 
-        $tanggal_mulai = date('Y-m-01', strtotime($periode));//awal bulan saat ini
-        $tanggal_selesai = date('Y-m-d',strtotime($periode));
+            if ($periode) {
+                    $tanggal_mulai   = $periode . '-01';
+                    $tanggal_selesai = date('Y-m-t', strtotime($tanggal_mulai));
+                } else {
+    // default bulan ini kalau belum pilih periode
+                    $tanggal_mulai   = date('Y-m-01');
+                    $tanggal_selesai = date('Y-m-t');
+                }
 
-        $laporan = $this->ordersModel->laporanRestoran();
+        $laporan = $this->ordersModel->laporanRestoran($tanggal_mulai,$tanggal_selesai);
         foreach($laporan as &$row){
             $row['menu_terlaris'] = $this->orderDetailsModel->menuLaris($row['restaurants_id']);
         }

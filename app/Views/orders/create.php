@@ -74,7 +74,7 @@
                         <input type="text" class="form-control price"  name="price[]" readonly>
                     </div>
                     <div class="col-md-3 d-flex align-items-center">
-                            <input type="text" class="form-control subtotal" name="subtotal[]" readonly>
+                        <input type="text" class="form-control subtotal" name="subtotal[]" readonly>
                     </div>
                     <div class="col-md-3 d-flex align-items-center">
                         <button type="button" class="btn btn-sm btn-outline-danger mt-2 btnHapusBaris">
@@ -114,6 +114,10 @@
                 });
                 addRemoveHandler(document.querySelector('.btnHapusBaris'));
             }
+            document.getElementById('customers_id').addEventListener('change', function(){ //Isi otomatis kolom alamat pas pilih nama orang.
+                    let inputAlamat = this.options[this.selectedIndex].getAttribute('data-alamat');
+                    document.getElementById('address').value = inputAlamat;
+                })
 
             document.addEventListener('input',function(list){ //Kalkulator otomatis
                if(list.target.classList.contains('qty') || list.target.classList.contains('menu')){
@@ -148,10 +152,7 @@
                 })
                 .catch(error => console.error(error));
 
-                document.getElementById('customers_id').addEventListener('change', function(){ //Isi otomatis kolom alamat pas pilih nama orang.
-                    let inputAlamat = this.options[this.selectedIndex].getAttribute('data-alamat');
-                    document.getElementById('address').value = inputAlamat;
-                })
+                
             });
         </script>
     </div>     

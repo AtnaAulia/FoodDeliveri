@@ -64,26 +64,30 @@ class OrdersModel extends Model
                     ->orderBy('order_time','ASC')
                     ->findAll();
    }
-   public function laporanPendapatan(){
+   public function laporanPendapatan($tanggalMulai,$tanggalSelesai){
     return $this->select('orders.order_time,restaurants.restaurants_id,restaurants.name AS restaurants_name,COUNT(orders.orders_id) AS jumlah_order,SUM(orders.total_amount) AS total_pendapatan')
                 ->join('restaurants','restaurants.restaurants_id = orders.restaurants_id','left')
+                ->where('orders.order_time >=',$tanggalMulai)
+                ->where('orders.order_time <=',$tanggalSelesai)
                 ->orderBy('order_time')
                 ->groupBy('orders_id')
                 ->findAll();
    }
 
-  public function laporanDriver()
+  public function laporanDriver($tanggalMulai,$tanggalSelesai)
 {
     return $this->select('drivers.name AS drivers_name,
                           COUNT(orders.orders_id) AS jumlah_antar,
                           drivers.status AS stat_drivers,
                           ')
                 ->join('drivers', 'drivers.driver_id = orders.driver_id', 'left')
+                ->where('orders.order_time >=',$tanggalMulai)
+                ->where('orders.order_time <=',$tanggalSelesai)
                 ->where('orders.status', 'Selesai')
                 ->groupBy('drivers.driver_id')
                 ->findAll();
 }
-public function laporanRestoran()
+public function laporanRestoran($tanggalMulai,$tanggalSelesai)
 {
     return $this->select('restaurants.restaurants_id,
                           restaurants.name AS restaurants_name,
@@ -92,6 +96,8 @@ public function laporanRestoran()
                           SUM(orders.total_amount) AS total_pendapatan')
                 ->join('restaurants', 'restaurants.restaurants_id = orders.restaurants_id', 'left')
                 ->join('menus', 'menus.restaurants_id = restaurants.restaurants_id', 'left')
+                ->where('orders.order_time >=',$tanggalMulai)
+                ->where('orders.order_time <=',$tanggalSelesai)
                 ->where('orders.status', 'Selesai')
                 ->groupBy('restaurants.restaurants_id')
                 ->get()

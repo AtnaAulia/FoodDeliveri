@@ -35,7 +35,11 @@ class DriversController extends BaseController
 
     public function insert()
     {
-        $driversModel = new \App\Models\DriversModel();
+        $db = \Config\Database::connect();
+
+        try{
+            $driversModel = new \App\Models\DriversModel();
+            $db->transBegin();
         // di bawah ini adalah query INSERT INTO versi codeigniter
         $driversModel->insert([
             'name' => $this->request->getPost('name'),
@@ -44,13 +48,25 @@ class DriversController extends BaseController
             'status' => 'Online'
 
             
-        ]);
-        //Mengembalikan ke index buku dengan flash massage "success" pada main.php
-         return redirect()->to('/drivers')->with('toast', [
+        ],true);
+         if ($db->transStatus() === false) { //Cek apakah semua proses sukses
+            $db->transRollback();
+            return redirect()->back()->with('error', 'Gagal Memasukan Data');
+        } else { //Simpan permanen JIKA sukses
+            $db->transCommit(); 
+            return redirect()->to('/drivers')->with('toast', [
             'type' => 'success',
             'title' => 'Berhasil',
             'message' => 'Data Drivers berhasil ditambahkan'
-        ]);
+        ]); }
+        }
+        catch (\Throwable $e) { //Batalkan SEMUA jika ada 1 yang error
+            $db->transRollback();
+            throw $e;
+        }
+        
+        //Mengembalikan ke index buku dengan flash massage "success" pada main.php
+        
     }
 
      public function edit($id)
@@ -73,19 +89,34 @@ class DriversController extends BaseController
 
     public function update($id)
     {
-        $driversModel = new \App\Models\DriversModel();
+         $db = \Config\Database::connect();
+
+    try{
+            $driversModel = new \App\Models\DriversModel();
+            $db->transBegin();
         $driversModel->update($id, [
             'name' => $this->request->getPost('name'),
             'phone' => $this->request->getPost('phone'),
             'vehicle_plate' => $this->request->getPost('vehicle_plate'),
             'status' => $this->request->getPost('status'),
             
-        ]);
-        return redirect()->to('/drivers')->with('toast', [
+        ],true);
+        if ($db->transStatus() === false) { //Cek apakah semua proses sukses
+            $db->transRollback();
+            return redirect()->back()->with('error', 'Gagal mengedit');
+        } else { //Simpan permanen JIKA sukses
+            $db->transCommit(); 
+           return redirect()->to('/drivers')->with('toast', [
             'type' => 'success',
             'title' => 'Berhasil',
             'message' => 'Data Drivers berhasil diperbarui'
-        ]);
+        ]); }
+        }
+        catch (\Throwable $e) { //Batalkan SEMUA jika ada 1 yang error
+            $db->transRollback();
+            throw $e;
+        }
+        
     }
 //perbaikan delete
     public function delete($id)

@@ -9,7 +9,7 @@
         <form action="<?= base_url('laporan/pendapatan') ?>" class="g-3" method="get">
             <div class="col-md-3">
                 <label class="form-label">Bulan</label>
-                <input type="date" class="form-control" name="periode" required>
+                <input type="month" class="form-control" name="periode" required>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-primary">Tampilkan</button>
