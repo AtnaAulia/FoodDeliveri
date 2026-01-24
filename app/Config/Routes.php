@@ -5,6 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('login','AuthController::login');
+$routes->post('login','AuthController::dologin');
+$routes->get('logout','AuthController::logout');
 $routes->get('/', 'Home::index');
 
 // Customers
