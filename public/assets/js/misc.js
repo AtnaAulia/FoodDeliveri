@@ -11,15 +11,18 @@
     //Active class can be hard coded directly in html file also as required
 
     function addActiveClass(element) {
-      if (current === "") {
-        //for root url
-        if (element.attr('href').indexOf("index.html") !== -1) {
-          element.parents('.nav-item').last().addClass('active');
-          if (element.parents('.sub-menu').length) {
-            element.closest('.collapse').addClass('show');
-            element.addClass('active');
-          }
-        }
+  var linkPath = element.attr('href').replace(base_url, '');
+  var linkSegment = linkPath.split('/').filter(Boolean)[0];
+
+  if (linkSegment === current) {
+    element.parents('.nav-item').last().addClass('active');
+
+    if (element.parents('.sub-menu').length) {
+      element.closest('.collapse').addClass('show');
+      element.addClass('active');
+    }
+  
+
       } else {
         //for other url
         if (element.attr('href').indexOf(current) !== -1) {

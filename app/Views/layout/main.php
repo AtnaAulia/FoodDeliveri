@@ -71,7 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
     el.classList.remove('active');
   });
 
-  if (path.includes('/drivers')) {
+  if (path.includes('/laporan/')) {
+    // aktifkan parent laporan
+    document.querySelector('[href="#laporanMenu"]')?.classList.add('active');
+  }
+  else if (path.includes('/orders')) {
+    document.querySelector('a[href$="/orders"]')?.classList.add('active');
+  }
+  else if (path.includes('/drivers')) {
     document.querySelector('a[href$="/drivers"]')?.classList.add('active');
   }
   else if (path.includes('/customers')) {
@@ -85,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+
+
 <!-- modal delete pop up  !-->
 <script> const BASE_URL = "<?= base_url(); ?>";</script>
 <script src="<?= base_url('assets/js/modal-delete.js') ?>"></script>
