@@ -47,20 +47,23 @@ class OrdersController extends BaseController
         return view('orders/index',$data);
     }
     public function create(){ //membuat struktur form
-         $restaurant_id = $this->request->getGet('restaurants_id');
+         $restaurants_id = $this->request->getGet('restaurants_id');
 
-        $menus = $restaurant_id
-        ? $this->menusModel->where('restaurants_id', $restaurant_id)->findAll()
-        : [];
-       
+        $menus = [];
+    if ($restaurants_id) {
+        $menus = $this->menusModel
+            ->where('restaurants_id', $restaurants_id)
+            ->where('is_available', 'Yes')
+            ->findAll();
+    }
         $data =[
             'titlle' => 'Order',
             'subtitle' => 'Tambah Orderan',
             'customers' => $this->customersModel->findAll(),
-            'restaurants' => $this->restaurantsModel->findAll(),
+            'restaurants' => $this->restaurantsModel->where('status','Open')->findAll(),
             'drivers' => $this->driversModel->where('status', 'Online')->findAll(),
             'menus' => $menus,
-            'selectedRestaurant' => $restaurant_id
+            'selectedRestaurant' => $restaurants_id
         ];
         
         return view('orders/create',$data);
@@ -121,7 +124,7 @@ class OrdersController extends BaseController
     }
     public function DaftarMenu($restaurant_id) //menampilkan data menu berdasarkan tabel restaurant
     {
-        $menu = $this->menusModel->where('restaurants_id',$restaurant_id)->findAll();
+        $menu = $this->menusModel->where('restaurants_id',$restaurant_id)->where('is_available','Yes')->findAll();
         return $this->response->setJSON($menu);
     }
 
