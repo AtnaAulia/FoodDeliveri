@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Libraries\Pdf;
 
 use App\Models\CustomersModel;
 use App\Models\RestaurantsModel;
@@ -169,5 +170,18 @@ class OrdersController extends BaseController
         ]);
         $this->driversModel->setOnline($driver_id);
         return redirect()->to('/orders')->with('success','Pesanan telah Selesai');
+    }
+     public function cetak($id) {
+        $header = $this->orderModel->getHeaderById($id);
+        $detail = $this->ordersDetailModel->getDetailById($id);
+
+        $data = [
+            'header' => $header,
+            'detail' => $detail,
+        ];
+        $html = view('orders/pdf',$data);
+
+        $pdf = new Pdf();
+        $pdf->generate($html,'Bukti Peminjaman - ' . $id);
     }
 }
