@@ -90,6 +90,11 @@
                 </div>
             </form>
             <?php endif ?>
+            <?php if($header['status']==='Dikirim'): ?>
+            <a href="<?= base_url('orders/cetak/'.$header['orders_id']) ?>" class="btn btn-info" target="_blank">
+                Cetak
+            </a>
+            <?php endif; ?>
         </div>
     </div>
 </div>
