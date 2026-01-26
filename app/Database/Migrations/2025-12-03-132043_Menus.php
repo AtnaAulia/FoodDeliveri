@@ -41,6 +41,7 @@ class Menus extends Migration
             'is_available' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
+                'default' => 'Yes',
                 'null' => true
             ],
             'created_at' => [

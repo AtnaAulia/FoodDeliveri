@@ -42,6 +42,7 @@ class Orders extends Migration
         'status' => [
             'type' => 'VARCHAR',
             'constraint' => 50,
+            'default' => 'Diproses',
             'null' => true
         ],
         'total_amount' => [
