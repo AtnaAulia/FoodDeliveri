@@ -113,10 +113,20 @@ class OrdersController extends BaseController
 
         if ($db->transStatus() === false) { //Cek apakah semua proses sukses
             $db->transRollback();
-            return redirect()->back()->with('error', 'Gagal membuat pesanan');
+            return redirect()->back()->with('tost',
+            [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Pesanan gagal dibuat'
+            ]);
         } else { //Simpan permanen JIKA sukses
             $db->transCommit(); 
-            return redirect()->to('/orders/detail/'.$orders_id)->with('success','Pesanan berhasil dibuat');
+            return redirect()->to('/orders/detail/'.$orders_id)->with('toast',
+            [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Pesanan berhasil dibuat'
+            ]);
         }
         } catch (\Throwable $e) { //Batalkan SEMUA jika ada 1 yang error
             $db->transRollback();
