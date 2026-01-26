@@ -121,12 +121,7 @@ class OrdersController extends BaseController
             ]);
         } else { //Simpan permanen JIKA sukses
             $db->transCommit(); 
-            return redirect()->to('/orders/detail/'.$orders_id)->with('toast',
-            [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Pesanan berhasil dibuat'
-            ]);
+            return redirect()->to('/orders/detail/'.$orders_id)->with('success','pesanan berhasil dibuat');
         }
         } catch (\Throwable $e) { //Batalkan SEMUA jika ada 1 yang error
             $db->transRollback();
@@ -169,7 +164,12 @@ class OrdersController extends BaseController
 
         $this->driversModel->setOffline($driver_id);
 
-        return redirect()->to('/orders')->with('success','Pesanan sedang diantar');
+        return redirect()->to('/orders')->with('toast',
+        [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Pesanan berhasil dikirim'
+        ]);
     }
 
     public function Selesai($id){ //pesanan selesai
