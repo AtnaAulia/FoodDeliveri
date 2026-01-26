@@ -41,6 +41,7 @@ class RestaurantsController extends BaseController
             'name' => $this->request->getPost('name'),
             'phone' => $this->request->getPost('phone'),
             'address' => $this->request->getPost('address'),
+            'status'=> 'Open',
             'opening_hours' => $this->request->getPost('opening_hours'),
             
         ]);
