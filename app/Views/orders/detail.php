@@ -92,7 +92,7 @@
 
             <!-- TOMBOL SUBMIT -->
             <div class="mt-4">
-                <button type="submit" class="btn btn-success">
+                <button class="btn btn-success">
                     Antarkan
                 </button>
             </div>
@@ -100,7 +100,7 @@
         </form>
         <?php endif ?>
 
-        <?php if ($header['status'] === 'Dikirim') : ?>
+        <?php if ($header['status'] === 'Dikirim' || $header['status'] === 'Selesai') : ?>
             <a href="<?= base_url('orders/cetak/'.$header['orders_id']) ?>" 
                class="btn btn-info mt-3" target="_blank">
                 Cetak
