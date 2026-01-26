@@ -67,6 +67,8 @@
                   <td>
                     <?php if($row['status'] === 'Selesai'): ?>
                       <span class="badge bg-success" style="border-radius: 20px; padding: 5px 15px;">Selesai</span>
+                    <?php elseif($row['status'] === 'Dikirim'): ?>
+                      <span class="badge bg-warning" style="border-radius: 20px; padding: 5px 15px;">Dikirim</span>
                     <?php else: ?>
                       <span class="badge bg-warning" style="border-radius: 20px; padding: 5px 15px;">Diproses</span>
                     <?php endif; ?>

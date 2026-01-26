@@ -157,12 +157,13 @@ class OrdersController extends BaseController
             return redirect()->back()->with('error', 'Driver wajib dipilih');
         }
 
-        $this->orderModel->update($id, [
+        $this->orderModel->update($id,[
             'driver_id' => $driver_id,
             'status'    => 'Dikirim',
         ]);
 
         $this->driversModel->setOffline($driver_id);
+        
 
         return redirect()->to('/orders')->with('toast',
         [
