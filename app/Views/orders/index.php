@@ -64,7 +64,12 @@
                   <td><?= esc($row['drivers_name']); ?></td>
                   <td><?= esc($row['order_time']); ?></td>
                   <td><?= esc($row['delivery_address']); ?></td>
-                  <td><?= esc($row['status']); ?></td>
+                  <td>
+                    <?php if($row['status'] === 'Selesai'): ?>
+                      <span class="badge bg-success" style="border-radius: 20px; padding: 5px 15px;">Selesai</span>
+                    <?php else: ?>
+                      <span class="badge bg-warning" style="border-radius: 20px; padding: 5px 15px;">Diproses</span>
+                    <?php endif; ?>
                   <td>
                     <a href="<?= base_url('orders/detail/'.$row['orders_id']) ?>" class="btn btn-sm btn-info">
                       Detail
