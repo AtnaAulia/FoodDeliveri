@@ -36,10 +36,7 @@ class Restaurants extends Migration
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-<<<<<<< HEAD
                 'default' => 'Open',
-=======
->>>>>>> 7a12b2b1a9f87a7f705c6fc500552e680ff465b3
                 'null' => true
             ],
             'created_at' => [
