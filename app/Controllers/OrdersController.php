@@ -148,6 +148,21 @@ class OrdersController extends BaseController
 
         return view('orders/detail',$data);
     }
+    public function batal($id)
+    {
+        $order = $this->orderModel->find($id);
+
+        // Proteksi: tidak boleh batal jika sudah dikirim / selesai
+        if($order['status'] != 'Diproses'){
+            return redirect()->back()->with('error', 'Order tidak bisa dibatalkan');
+        }
+
+        $this->orderModel->update($id, [
+            'status' => 'Dibatalkan'
+        ]);
+
+        return redirect()->to('/orders')->with('success', 'Order berhasil dibatalkan');
+    }
 
     public function assignDriver($id) // memilih driver dan menugaskannya untuk mengantar makanan
     {
