@@ -33,7 +33,6 @@
                 <input type="text" class="form-control" value="<?= $header['restaurants_name'] ?>" readonly>
             </div>
         </div>
-
         <?php if ($header['status'] === 'Diproses') : ?>
         <!-- FORM DIBUKA SEKALI -->
         <form action="<?= base_url('orders/assignDriver/'.$header['orders_id']) ?>" method="post">
@@ -99,6 +98,17 @@
 
         </form>
         <?php endif ?>
+        <br>
+        <?php if($header['status'] == 'Diproses'): ?>
+            <form action="<?= base_url('orders/batal/'.$header['orders_id']) ?>" method="post" 
+                    onsubmit="return confirm('Yakin ingin membatalkan order ini?')">
+                    <?= csrf_field() ?>
+                    <button class="btn btn-danger">
+                     Batalkan Order
+                    </button>
+            </form>
+        <?php endif; ?>
+
 
         <?php if ($header['status'] === 'Dikirim' || $header['status'] === 'Selesai') : ?>
             <a href="<?= base_url('orders/cetak/'.$header['orders_id']) ?>" 

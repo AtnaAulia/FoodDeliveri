@@ -68,7 +68,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 d-flex align-items-center">
-                        <input type="number" name="qty[]" class="form-control qty" placeholder="Jumlah" >
+                        <input type="number" name="qty[]" class="form-control qty" placeholder="Jumlah" required>
                     </div>
                     <div class="col-md-3 d-flex align-items-center">
                         <input type="text" class="form-control price"  name="price[]" readonly>
