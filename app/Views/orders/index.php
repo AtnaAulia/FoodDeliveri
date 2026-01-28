@@ -80,9 +80,9 @@
                     </a>
 
                     <?php if($row['status'] === 'Dikirim'): ?>
-                    <a href="<?= base_url('orders/selesai/'.$row['orders_id']) ?>" class="btn btn-sm btn-success"onclick="return confirm('Selesaikan pesanan ini?')">
-                      Selesai
-                    </a>
+                   <a href="javascript:void(0)" class="btn btn-sm btn-success btn-selesai" data-url="<?= base_url('orders/selesai/'.$row['orders_id']) ?>" title="Selesaikan Pesanan">
+                     Selesai
+                   </a>
                     <?php endif; ?>
                   </td>
 
@@ -100,6 +100,31 @@
           </table>
           <div class="mt-3">
             <?= $pager->links('orders', 'bootstrap'); ?>
+         <!-- MODAL DELETE -->
+          <div id="deleteModal" class="modal-overlay">
+            <div class="modal-box">
+
+              <h4>Konfirmasi Pesanan</h4>
+
+              <div class="modal-gif">
+                <img class="center" src="<?= base_url('assets/images/Delivery.gif'); ?>" alt="Warning">
+              </div>
+
+              <p class="text-muted">
+                Apakah Anda yakin ingin Selesaikan Pesanan ini?
+              </p>
+
+              <div class="modal-actions">
+                <button id="btnCancel" type="button" class="btn btn-secondary w-50">
+                  Batal
+                </button>
+                <a id="btnConfirmDelete" href="#" class="btn btn-danger w-50">
+                  Hapus
+                </a>
+              </div>
+
+            </div>
+          </div>
           </div>
         </div>
       </div>
