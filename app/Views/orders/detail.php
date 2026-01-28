@@ -52,9 +52,15 @@
                     </select>
                 </div>
             </div>
+             <div class="mt-4">
+                <button class="btn btn-success">
+                    Antarkan
+                </button>
+            </div>
+
 
             <hr>
-
+<?php endif; ?>
             <!-- TABEL MENU -->
             <h6 class="mb-3">Daftar Menu yang Dipesan</h6>
             <div class="table-responsive">
@@ -90,14 +96,9 @@
             </div>
 
             <!-- TOMBOL SUBMIT -->
-            <div class="mt-4">
-                <button class="btn btn-success">
-                    Antarkan
-                </button>
-            </div>
-
+           
         </form>
-        <?php endif ?>
+      
         <br>
         <?php if($header['status'] == 'Diproses'): ?>
             <form action="<?= base_url('orders/batal/'.$header['orders_id']) ?>" method="post" 
