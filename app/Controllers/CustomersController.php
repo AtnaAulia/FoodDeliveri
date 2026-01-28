@@ -11,10 +11,11 @@ class CustomersController extends BaseController
     public function index() {
         $customersModel = new \App\Models\CustomersModel();
         $keyword = $this->request->getGet('keyword');
+        $customers = $customersModel->getCustomers(5, $keyword);
         $data = [
             'title' => 'Customers',
             'subtitle' => 'Data Customers',
-            'customers' => $customersModel->getCustomers(5, 'customers', $keyword),
+            'customers' => $customers,
             'pager' => $customersModel->pager,
             'perPage' => 5,
             'keyword' => $keyword

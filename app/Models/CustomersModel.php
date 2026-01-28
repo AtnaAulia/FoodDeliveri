@@ -20,8 +20,10 @@ class CustomersModel extends Model
 
     // Dates
     protected $useTimestamps = true;
-     public function getCustomers($perPage, $group, $keyword = null) {
-        $builder = $this->select('customers.*');
+    protected $useSoftDeletes = false;
+    
+     public function getCustomers($perPage, $keyword = null) {
+     $builder = $this->builder();
 
         if(!empty($keyword)) {
             $builder = $builder->groupStart()
@@ -31,6 +33,6 @@ class CustomersModel extends Model
             ->orLike('address', $keyword)
             ->groupEnd();
         }
-        return $builder->paginate($perPage, $group);
+        return $this->paginate($perPage);
     }
 }
