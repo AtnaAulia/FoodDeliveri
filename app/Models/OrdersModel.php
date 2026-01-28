@@ -104,6 +104,14 @@ public function laporanRestoran($tanggalMulai,$tanggalSelesai)
                 ->getResultArray();
 }
 
+public function getOrderDay(){
+    return $this->select('DATE(orders.order_time) AS hari, SUM(orders.total_amount) AS total')
+                ->where('status','selesai')
+                ->groupBy('DATE(orders.order_time)')
+                ->orderBy('hari','ASC')
+                ->findAll();
+
+}
 
     
 }
