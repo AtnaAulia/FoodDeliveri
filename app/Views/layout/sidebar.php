@@ -21,8 +21,8 @@ $segment2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
-            <h5 class="mb-0 font-weight-normal">Kayla Hayya</h5>
-            <span>Admin</span>
+            <h5 class="mb-0 font-weight-normal"><?= session('nama') ?></h5>
+            <span><?= session('role') ?></span>
           </div>
         </div>
         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
