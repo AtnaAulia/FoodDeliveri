@@ -3,16 +3,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnCancel = document.getElementById('btnCancel');
   const btnConfirm = document.getElementById('btnConfirmDelete');
 
-  if (!modal || !btnConfirm) return;
+  /* =========================
+     DELETE
+  ========================== */
+  document.addEventListener('click', function (e) {
+    const btnDelete = e.target.closest('.btn-delete');
+    if (!btnDelete) return;
 
-  document.querySelectorAll('.btn-delete').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const url = this.dataset.url;
-      if (!url) return;
+    const url = btnDelete.dataset.url;
+    if (!url) return;
 
-      btnConfirm.href = BASE_URL + url;
-      modal.classList.add('show');
-    });
+    btnConfirm.href = BASE_URL + url;
+    btnConfirm.textContent = 'Hapus';
+
+    modal.querySelector('h4').textContent = 'Hapus Data';
+    modal.querySelector('p').textContent =
+      'Apakah Anda yakin ingin menghapus data ini?';
+
+    modal.classList.add('show');
+  });
+
+  /* =========================
+     SELESAI ORDER (PAKAI MODAL)
+  ========================== */
+  document.addEventListener('click', function (e) {
+    const btnSelesai = e.target.closest('.btn-selesai');
+    if (!btnSelesai) return;
+
+    const url = btnSelesai.dataset.url;
+    if (!url) return;
+
+    btnConfirm.href = url;
+    btnConfirm.textContent = 'Selesaikan';
+
+    modal.querySelector('h4').textContent = 'Konfirmasi Pesanan';
+    modal.querySelector('p').textContent =
+      'Apakah Anda yakin ingin menyelesaikan pesanan ini?';
+
+    modal.classList.add('show');
   });
 
   btnCancel?.addEventListener('click', () => {
