@@ -42,6 +42,72 @@
     font-size: 14px;
     color: #777;
 }
+.dashboard-stat-card {
+  background: linear-gradient(145deg, #1f2937, #111827);
+  color: #fff;
+  border-radius: 14px;
+}
+.dashboard-card,
+.dashboard-stat-card {
+  background: linear-gradient(145deg, #1f2937, #111827);
+  color: #fff;
+  border-radius: 16px;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+}
+
+
+
+
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+}
+.order-summary-list .list-group-item {
+  background: #0f172a !important;
+  color: #cbd5e1 !important;
+  border: none !important;
+  border-left: 4px solid transparent;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  transition: all .2s ease;
+}
+
+.order-summary-list .list-group-item:hover {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  transform: translateX(4px);
+}
+
+/* garis status */
+.order-summary-list .total { border-left-color: #0d6efd; }
+.order-summary-list .selesai { border-left-color: #22c55e; }
+.order-summary-list .diproses { border-left-color: #f59e0b; }
+.order-summary-list .dikirim { border-left-color: #38bdf8; }
+.order-summary-list .dibatalkan { border-left-color: #ef4444; }
+
+/* matikan style active putih Bootstrap */
+.order-summary-list .list-group-item.active {
+  background: #1e293b !important;
+  color: #fff !important;
+}
+
+
 
 .order-summary-card {
   background: #ffffff;
@@ -73,41 +139,11 @@
   margin: 0;
 }
 
-.order-summary-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 14px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
+
+.order-summary-card canvas {
+  max-width: 180px;
+  max-height: 180px;
+  margin: 0 auto;
+  display: block;
 }
 
-.order-summary-list li strong {
-  font-weight: 700;
-}
-
-/* warna tiap status */
-.order-summary-list li.total {
-  background: #f2f4f7;
-}
-
-.order-summary-list li.success {
-  background: #e8f8f1;
-  color: #1fa97c;
-}
-
-.order-summary-list li.process {
-  background: #fff4e5;
-  color: #f59e0b;
-}
-
-.order-summary-list li.delivery {
-  background: #eef2ff;
-  color: #4f46e5;
-}
-
-.order-summary-list li.cancel {
-  background: #feecec;
-  color: #dc2626;
-}
