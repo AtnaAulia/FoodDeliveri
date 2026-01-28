@@ -10,16 +10,16 @@ class User extends Seeder
     {
          $data = [
             [
-                'nama' => 'Staf Perpustakaan',
-                'username' => 'staff',
+                'nama' => 'Admin',
+                'username' => 'admin',
                 'password' => password_hash('123456',PASSWORD_DEFAULT),
-                'role' => 'staf',
+                'role' => 'Admin',
             ],
             [
-                'nama' => 'Kepala Perpustakaan',
-                'username' => 'kepala',
+                'nama' => 'Owner',
+                'username' => 'owner',
                 'password' => password_hash('123456',PASSWORD_DEFAULT),
-                'role' => 'kepala',
+                'role' => 'Owner',
             ],
         ];
         $this->db->table('user')->insertBatch($data);

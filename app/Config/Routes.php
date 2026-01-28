@@ -1,6 +1,7 @@
 <?php
 
 use CodeIgniter\Router\RouteCollection;
+use PHPUnit\Metadata\Group;
 
 /**
  * @var RouteCollection $routes
@@ -8,8 +9,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('login','AuthController::login');
 $routes->post('login','AuthController::dologin');
 $routes->get('logout','AuthController::logout');
+$routes->group('',['filter'=>'auth'],function($routes){
 $routes->get('/', 'Home::index');
-
+$routes->group('',['filter'=>'role:admin'],function($routes){
 // Customers
 $routes->get('customers', 'CustomersController::index');
 $routes->get('customers/create', 'CustomersController::create'); //Menarik form tambah
@@ -53,7 +55,14 @@ $routes->post('orders/batal/(:num)','OrdersController::batal/$1');
 $routes->get('orders/selesai/(:num)','OrdersController::selesai/$1');
 $routes->get('orders/cetak/(:num)','OrdersController::cetak/$1');
 
+});
+$routes->group('',['filter'=>'role:owner'],function($routes){
 $routes->get('laporan/orders','LaporanController::orders');
 $routes->get('laporan/pendapatan','LaporanController::pendapatan');
 $routes->get('laporan/driver','LaporanController::driver');
 $routes->get('laporan/restoran','LaporanController::restaurants');
+});
+
+
+
+});

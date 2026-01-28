@@ -3,6 +3,7 @@ $uri = service('uri');
 
 $segment  = $uri->getTotalSegments() >= 1 ? $uri->getSegment(1) : '';
 $segment2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
+$role = session()->get('role');
 ?>
 
 
@@ -71,7 +72,7 @@ $segment2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
     <span class="menu-title">Dashboard</span>
   </a>
 </li>
-
+<?php if($role === 'admin') : ?>
 <li class="nav-item menu-items <?= ($segment === 'customers') ? 'active' : '' ?>">
   <a class="nav-link " href="<?= base_url('customers') ?>">
     <span class="menu-icon"><i class="mdi mdi-account-group"></i></span>
@@ -105,7 +106,7 @@ $segment2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
     <span class="menu-title">Orders</span>
   </a>
 </li>
-
+<?php elseif($role === 'owner') : ?>
 <li class="nav-item menu-items <?= ($segment === 'laporan') ? 'active menu-open' : '' ?>">
   <a class="nav-link" data-toggle="collapse" href="#laporanMenu" aria-expanded="false" aria-controls="laporanMenu">
     <span class="menu-icon"><i class="mdi mdi-file-chart"></i></span>
@@ -129,6 +130,7 @@ $segment2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
     </ul>
   </div>
 </li>
+<?php endif; ?>
 
   </ul>
 

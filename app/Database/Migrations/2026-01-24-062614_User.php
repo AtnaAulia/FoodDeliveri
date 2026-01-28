@@ -28,8 +28,8 @@ class User extends Migration
             ],
             'role' => [
                 'type' => 'ENUM',
-                'constraint' => ['staf','kepala'],
-                'default' => 'staf'
+                'constraint' => ['admin','owner'],
+                'default' => 'owner'
             ],
             'created_at' => [
                 'type' => 'DATETIME',
