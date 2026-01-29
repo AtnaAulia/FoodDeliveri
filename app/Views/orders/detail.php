@@ -33,83 +33,73 @@
                 <input type="text" class="form-control" value="<?= $header['restaurants_name'] ?>" readonly>
             </div>
         </div>
-        <?php if ($header['status'] === 'Diproses') : ?>
+
         <!-- FORM DIBUKA SEKALI -->
-        <form action="<?= base_url('orders/assignDriver/'.$header['orders_id']) ?>" method="post">
-        <?= csrf_field() ?>
+        <?php if ($header['status'] === 'Diproses') : ?>
+            <form action="<?= base_url('orders/assignDriver/'.$header['orders_id']) ?>" method="post">
+                <?= csrf_field() ?>
 
-            <!-- PILIH DRIVER -->
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <label class="form-label">Pilih Driver</label>
-                    <select name="driver_id" class="form-control" required>
-                        <option value="">- Pilih Driver -</option>
-                        <?php foreach($drivers as $d): ?>
-                            <option value="<?= $d['driver_id'] ?>">
-                                <?= $d['name'] ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
+                <!-- PILIH DRIVER -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Pilih Driver</label>
+                        <select name="driver_id" class="form-control" required>
+                            <option value="">- Pilih Driver -</option>
+                            <?php foreach($drivers as $d): ?>
+                                <option value="<?= $d['driver_id'] ?>">
+                                    <?= $d['name'] ?>
+                                </option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
-             <div class="mt-4">
-                <button class="btn btn-success">
-                    Antarkan
-                </button>
-            </div>
+        <?php endif; ?>   
 
-
-            <hr>
-<?php endif; ?>
-            <!-- TABEL MENU -->
-            <h6 class="mb-3">Daftar Menu yang Dipesan</h6>
-            <div class="table-responsive">
-                <table class="table table-bordered mb-0">
-                    <thead class="table-light">
-                        <tr>
-                            <th>No.</th>
-                            <th>Menu</th>
-                            <th>Jumlah</th>
-                            <th>Harga</th>
-                            <th>Total Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach($detail as $data): ?>
+                <!-- TABEL MENU -->
+                <h6 class="mb-3">Daftar Menu yang Dipesan</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-light">
                             <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $data['name'] ?></td>
-                                <td><?= $data['qty'] ?></td>
-                                <td><?= $data['price'] ?></td>
-                                <td><?= $data['subtotal'] ?></td>
+                                <th>No.</th>
+                                <th>Menu</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Total Harga</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="4" class="text-center">Total Bayar</th>
-                            <th><?= $header['total_amount'] ?></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-
-            <!-- TOMBOL SUBMIT -->
-           
-        </form>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($detail as $data): ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $data['name'] ?></td>
+                                    <td><?= $data['qty'] ?></td>
+                                    <td><?= $data['price'] ?></td>
+                                    <td><?= $data['subtotal'] ?></td>
+                                </tr>
+                                <?php endforeach ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" class="text-center">Total Bayar</th>
+                                <th><?= $header['total_amount'] ?></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <hr>
+                <?php if ($header['status'] === 'Diproses') : ?>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-success w-10 me-2 btn-lg">
+                        Antarkan
+                    </button>
+                </div>
+            </form> 
+            <?php endif; ?>
       
         <br>
-        <?php if($header['status'] == 'Diproses'): ?>
-            <form action="<?= base_url('orders/batal/'.$header['orders_id']) ?>" method="post" 
-                    onsubmit="return confirm('Yakin ingin membatalkan order ini?')">
-                    <?= csrf_field() ?>
-                    <button class="btn btn-danger">
-                     Batalkan Order
-                    </button>
-            </form>
-        <?php endif; ?>
-
 
         <?php if ($header['status'] === 'Dikirim' || $header['status'] === 'Selesai') : ?>
             <a href="<?= base_url('orders/cetak/'.$header['orders_id']) ?>" 
