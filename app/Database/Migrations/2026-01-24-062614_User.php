@@ -31,6 +31,11 @@ class User extends Migration
                 'constraint' => ['admin','owner'],
                 'default' => 'owner'
             ],
+            'foto' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'default' => 'default.jpg'
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true

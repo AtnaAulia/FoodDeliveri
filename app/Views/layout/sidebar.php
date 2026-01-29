@@ -18,11 +18,13 @@ $role = session()->get('role');
       <div class="profile-desc">
         <div class="profile-pic">
           <div class="count-indicator">
-            <img class="img-xs rounded-circle " src="<?= base_url('assets/images/faces/face15.jpeg') ?>" alt="">
+            <img class="img-xs rounded-circle" src="<?= base_url('image/foto/' . session('foto')) ?>" alt="">
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
-            <h5 class="mb-0 font-weight-normal"><?= session('nama') ?></h5>
+            <h5 class="mb-0 font-weight-normal">
+              <?= session('role') === 'admin' ? 'Jesica' : (session('role') === 'owner' ? 'Jonathan' : session('nama')) ?>
+            </h5>
             <span><?= session('role') ?></span>
           </div>
         </div>

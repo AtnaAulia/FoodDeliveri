@@ -7,8 +7,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="<?= base_url('../../assets/images/faces/face15.jpeg') ?>" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= session('nama') ?></p>
+                    <img class="img-xs rounded-circle" src="<?= base_url('image/foto/' . session('foto')) ?>" alt="">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Halo <strong><?= session('nama') ?></strong></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>

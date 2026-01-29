@@ -13,13 +13,15 @@ class User extends Seeder
                 'nama' => 'Admin',
                 'username' => 'admin',
                 'password' => password_hash('123456',PASSWORD_DEFAULT),
-                'role' => 'Admin',
+                'role' => 'admin',
+                'foto' => 'admin.jpg'
             ],
             [
                 'nama' => 'Owner',
                 'username' => 'owner',
                 'password' => password_hash('123456',PASSWORD_DEFAULT),
-                'role' => 'Owner',
+                'role' => 'owner',
+                'foto' => 'owner.jpg'
             ],
         ];
         $this->db->table('user')->insertBatch($data);

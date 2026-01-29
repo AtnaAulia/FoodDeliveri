@@ -39,7 +39,8 @@ class AuthController extends BaseController
             'islogin' => true,
             'user_id' => $user['id'],
             'nama' => $user['nama'],
-            'role' => $user['role']
+            'role' => $user['role'],
+            'foto' => $user['foto']
         ]);
         return redirect()->to('/');
     }
