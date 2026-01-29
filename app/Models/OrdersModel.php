@@ -64,15 +64,22 @@ class OrdersModel extends Model
                     ->orderBy('order_time','ASC')
                     ->findAll();
    }
-   public function laporanPendapatan($tanggalMulai,$tanggalSelesai){
-    return $this->select('orders.order_time,restaurants.restaurants_id,restaurants.name AS restaurants_name,COUNT(orders.orders_id) AS jumlah_order,SUM(orders.total_amount) AS total_pendapatan')
-                ->join('restaurants','restaurants.restaurants_id = orders.restaurants_id','left')
-                ->where('orders.order_time >=',$tanggalMulai)
-                ->where('orders.order_time <=',$tanggalSelesai)
-                ->orderBy('order_time')
-                ->groupBy('orders_id')
-                ->findAll();
-   }
+   public function laporanPendapatan($tanggalMulai, $tanggalSelesai)
+{
+    return $this->select('
+            restaurants.restaurants_id,
+            restaurants.name AS restaurants_name,
+            COUNT(orders.orders_id) AS jumlah_order,
+            SUM(orders.total_amount) AS total_pendapatan
+        ')
+        ->join('restaurants', 'restaurants.restaurants_id = orders.restaurants_id', 'left')
+        ->where('orders.order_time >=', $tanggalMulai)
+        ->where('orders.order_time <=', $tanggalSelesai)
+        ->groupBy('restaurants.restaurants_id')
+        ->orderBy('restaurants.name', 'ASC')
+        ->findAll();
+}
+
 
   public function laporanDriver($tanggalMulai,$tanggalSelesai)
 {
