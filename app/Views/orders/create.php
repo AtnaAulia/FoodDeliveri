@@ -59,7 +59,7 @@
             </div>
             <div id="wrapper-menu">
                 <div class="row mb-3 baris-tambahan">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <select name="menus_id[]" id="menu" required class="form-select form-control menu">
                             <option value="">- Pilih Menu -</option>
                             <?php foreach($menus as $menu): ?>
@@ -67,16 +67,16 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-md-3 d-flex align-items-center">
+                    <div class="col-md-2 d-flex align-items-center">
                         <input type="number" name="qty[]" class="form-control qty" placeholder="Jumlah" required>
                     </div>
-                    <div class="col-md-3 d-flex align-items-center">
+                    <div class="col-md-2 d-flex align-items-center">
                         <input type="text" class="form-control price"  name="price[]" readonly>
                     </div>
-                    <div class="col-md-3 d-flex align-items-center">
+                    <div class="col-md-2 d-flex align-items-center">
                         <input type="text" class="form-control subtotal" name="subtotal[]" readonly>
                     </div>
-                    <div class="col-md-3 d-flex align-items-center">
+                    <div class="col-md-2 d-flex align-items-center">
                         <button type="button" class="btn btn-sm btn-outline-danger mt-2 btnHapusBaris">
                             Hapus
                         </button>

@@ -64,18 +64,19 @@ class OrdersModel extends Model
                     ->orderBy('order_time','ASC')
                     ->findAll();
    }
-   public function laporanPendapatan($tanggalMulai, $tanggalSelesai)
+  public function laporanPendapatan($tanggalMulai, $tanggalSelesai)
 {
     return $this->select('
             restaurants.restaurants_id,
             restaurants.name AS restaurants_name,
+            orders.order_time,
             COUNT(orders.orders_id) AS jumlah_order,
             SUM(orders.total_amount) AS total_pendapatan
-        ')
+        ') // Pastikan tidak ada koma setelah total_pendapatan sebelum tanda kutip tutup
         ->join('restaurants', 'restaurants.restaurants_id = orders.restaurants_id', 'left')
         ->where('orders.order_time >=', $tanggalMulai)
         ->where('orders.order_time <=', $tanggalSelesai)
-        ->groupBy('restaurants.restaurants_id')
+        ->groupBy('restaurants.restaurants_id, restaurants.name, orders.order_time') 
         ->orderBy('restaurants.name', 'ASC')
         ->findAll();
 }
