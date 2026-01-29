@@ -35,9 +35,6 @@
   }
 }
 
-.content-wrapper {
-  background: $content-bg;
-  padding: 1.875rem 1.75rem;
-  width: 100%;
-  @include flex-grow(1);
+.content-wrapper.full-page-wrapper {
+  background: linear-gradient(135deg, #2ecc71, #1abc9c) !important;
 }
