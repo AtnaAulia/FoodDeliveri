@@ -1,13 +1,13 @@
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
 
+
+<!-- PAGE TITLE -->
+<div class="page-header mb-4">
+  <h3 class="page-title text-white fw-bold">Dashboard</h3>
+</div>
+
 <div class="content-wrapper">
-
-  <!-- PAGE TITLE -->
-  <div class="page-header mb-4">
-    <h3 class="page-title text-white fw-bold">Dashboard</h3>
-  </div>
-
   <!-- STAT CARDS -->
   <div class="row g-4 mb-4">
     <?php
@@ -40,23 +40,22 @@
   <div class="row g-4">
 
     <!-- REVENUE CHART -->
-<div class="col-lg-8">
-  <div class="card border-0 h-100 dashboard-card">
-    <div class="card-body">
-      <h4 class="card-title text-white mb-3">Revenue</h4>
-      <div style="height:300px;">
-        <canvas id="revenueChart"></canvas>
+    <div class="col-lg-8">
+      <h5 class="card-title text-white mb-3">Chart Pendapatan</h5>
+      <div class="card border-0 h-80 dashboard-card">
+        <div class="card-body">
+          <div style="height:300px;">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- ORDER SUMMARY -->
     <div class="col-lg-4">
-      <div class="card border-0 h-100 dashboard-card order-summary-card">
+      <h5 class="card-title text-white mb-3">Ringkasan Pesanan</h5>
+      <div class="card border-0 h-80 dashboard-card order-summary-card">
         <div class="card-body">
-          <h4 class="card-title text-white mb-3">Order Summary</h4>
-
           <ul class="list-group list-group-flush order-summary-list">
             <li class="list-group-item d-flex justify-content-between total">
               Total <span class="badge bg-primary"><?= $totalOrders ?? 0 ?></span>

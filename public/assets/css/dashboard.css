@@ -46,7 +46,10 @@
   background: linear-gradient(145deg, #1f2937, #111827);
   color: #fff;
   border-radius: 14px;
+  transform: translateY(-20px); /* naik 20px ke atas */
+  transition: transform 0.3s ease; /* opsional biar animasi smooth */
 }
+
 .dashboard-card,
 .dashboard-stat-card {
   background: linear-gradient(145deg, #1f2937, #111827);
