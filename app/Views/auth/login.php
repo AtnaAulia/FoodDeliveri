@@ -38,12 +38,12 @@
                   <?= csrf_field() ?>
 
                   <div class="form-group">
-                    <label>Username</label>
+                    <label style="color: black;">Username</label>
                     <input type="text" class="form-control p_input" name="username" required>
                   </div>
 
                   <div class="form-group">
-                    <label>Password</label>
+                    <label style="color: black";>Password</label>
                     <input type="password" class="form-control p_input" name="password" required>
                   </div>
     
