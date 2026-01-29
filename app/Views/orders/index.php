@@ -48,7 +48,6 @@
                 <th>Restaurant</th>
                 <th>Driver</th>
                 <th>Waktu Pemesanan</th>
-                <th>Alamat</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -63,7 +62,6 @@
                   <td><?= esc($row['restaurants_name']); ?></td>
                   <td><?= esc($row['drivers_name']); ?></td>
                   <td><?= esc($row['order_time']); ?></td>
-                  <td><?= esc($row['delivery_address']); ?></td>
                   <td>
                     <?php if($row['status'] === 'Selesai'): ?>
                       <span class="badge bg-success" style="border-radius: 20px; padding: 5px 15px;">Selesai</span>
